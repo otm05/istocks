@@ -1,0 +1,85 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+body{
+background-color: rgb(218, 233, 252);
+font-family: sans-serif;
+
+}
+.entr{
+user-select: none;
+font-family: "Great Vibes", cursive;
+letter-spacing: 5px;
+width: 300px;
+font-size: 30px;
+margin: auto;
+background-color: rgb(91, 173, 187);
+padding: 10px 0px 10px 0px;
+text-align: center;
+border-radius: 15px 15px 0px 0px;
+font-weight: bold;
+color: linen;
+}
+fieldset{
+border: none;
+}
+label{
+user-select: none;
+margin-left: 60px;
+margin-top:70px ;
+width: 150px;
+color: black;
+font-size: 19px;
+font-weight: 800;
+}
+
+input[type=submit]{
+display: block;
+margin: 20px 0px 0px 20px ;
+text-align: center;
+border-radius: 10px;
+border: 2px solid;
+padding: 14px 110px ;
+outline: none;
+cursor: pointer;
+
+}
+input[type=submit]:hover{
+background-color:rgb(91, 173, 187);
+}
+input[type=text]{
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+}
+.col1{
+width: 500px;
+clear: both;
+}
+.col1 input[type=text]{
+width: 95%;
+clear: both;
+}
+.col2{
+width: 500px;
+clear: both;
+}
+.col2 input[type=text]{
+width: 95%;
+clear: both;
+}
+label{
+color: rgb(69, 136, 148);
+}
+.Global{
+display: flex;
+flex-direction: row;
+justify-content: center;
+width: 100%;
+}
+.div_butt{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
