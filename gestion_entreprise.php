@@ -96,6 +96,8 @@ if(isset($_GET))
     }
 }
 ?>
+
+
 <br><br><br><br><br>
 <style>
 .nav-links a:hover{
@@ -123,7 +125,7 @@ background-color: #FFA137;
         <legend class="entr">Entreprises</legend><br><br><br>
         <div class="Global">
         
-        <!--div col2-->
+        <!--div col1-->
         <div class="col1" >
         <label>Code Entreprises : </label>
         <input type='text' name='CodeEntr' placeholder="entrer code of user"><br><br>
@@ -152,9 +154,9 @@ background-color: #FFA137;
         <label>Fax :</label>
         <input type= 'text' name='fax' placeholder="entrer fax "><br><br>
         <label>Site Web :</label>
-        <input type= 'text' name='siteWeb' placeholder="entrer siteWeb "><br><br> 
+        <input type= 'text' name='siteWeb' placeholder="entrer site Web "><br><br> 
         <label>Full Name Contact :</label>
-        <input type= 'text' name='fullnameContact' placeholder="entrer un fillname"><br><br>
+        <input type= 'text' name='fullnameContact' placeholder="entrer full name Contact"><br><br>
         <label>GSM Contact :</label>
         <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
         <label>Logo d'entreprises :</label>

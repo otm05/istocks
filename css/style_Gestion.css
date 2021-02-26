@@ -43,7 +43,9 @@ border: 2px solid;
 padding: 14px 110px ;
 outline: none;
 cursor: pointer;
-
+}
+input[placeholder] {
+    text-align: center;
 }
 input[type=submit]:hover{
 background-color:rgb(91, 173, 187);

@@ -123,48 +123,50 @@ background-color: #937CB1;
         <legend class="entr">Poles</legend><br><br><br>
         <div class="Global">
         
-        <!--div col2-->
+        <!--div col1-->
         <div class="col1" >
-        <label>Code Entreprises : </label>
-        <input type='text' name='CodeEntr' placeholder="entrer code of user"><br><br>
-        <label>Nom d'entreprises:</label>
-        <input type='text' name ='NomEntr' placeholder="entrer le Nom"><br><br>
+        <label>Code pole :</label>
+        <input type='text' name='codePL' placeholder="entrer code pole"><br><br>
+        <label>Code Entreprise :</label>
+        <input type='text' name ='CodeEntrFK' placeholder="entrer l'entreprise"><br><br>
+        <label>Nom pole : :</label>
+        <input type='text' name='NomPL' placeholder="entrer nom pole"><br><br>
         <label>Description :</label>
-        <input type='text' name='_description' placeholder="entrer une description"><br><br>
-        <label>Secteur Entreprises :</label>
-        <input type= 'text' name='SecteurEntre' placeholder="entrer un secteur "><br><br>
-        <label>Adresse  : </label>
-        <input type= 'text' name='adresse' placeholder="entrer adresse "><br><br>
+        <input type= 'text' name='_description' placeholder="entrer la description"><br><br>
+        <label>Sector Pole : </label>
+        <input type= 'text' name='secteurPL' placeholder="entrer Sector pole"><br><br>
+        <label>Adresse :</label>
+        <input type= 'text' name='adresse' placeholder="entrer l'adresse"><br><br>
         <label>Ville :</label>
-        <input type= 'text' name='ville' placeholder="entrer ville"><br><br>
-        <label>Code postal :</label>
-        <input type= 'text' name='codePostal' placeholder="entrer un codePostal "><br><br>
+        <input type= 'text' name='ville' placeholder="entrer la ville"><br><br>
+        <label>Code Postal :</label>
+        <input type= 'text' name='codePostal' placeholder="entrer code postal"><br><br>
         <label>Pays :</label>
-        <input type= 'text' name='pays' placeholder="entrer Pays "><br><br>
-        <label>Email :</label>
-        <input type= 'text' name='email' placeholder="entrer un Email "><br><br>
+        <input type= 'text' name='pays' placeholder="entrer pays"><br><br>
         </div>
 
         <!--div col2-->
         <div class="col2">
-        <label>Fixe :</label>
-        <input type= 'text' name='fixe' placeholder="entrer le fix "><br><br>
+        
+        <label>Email :</label>
+        <input type= 'text' name='email' placeholder="entrer l'email"><br><br>
+        <label>Fix :</label>
+        <input type= 'text' name='fix' placeholder="entrer fix"><br><br> 
         <label>Fax :</label>
-        <input type= 'text' name='fax' placeholder="entrer fax "><br><br>
-        <label>Site Web :</label>
-        <input type= 'text' name='siteWeb' placeholder="entrer siteWeb "><br><br> 
-        <label>Full Name Contact :</label>
-        <input type= 'text' name='fullnameContact' placeholder="entrer un fillname"><br><br>
-        <label>GSM Contact :</label>
-        <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
-        <label>Logo d'entreprises :</label>
-        <input type= 'text' name='logoEntre' placeholder="entrer un logo "><br><br>
-        <label>Code DGFK1 :</label>
-        <input type= 'text' name='codeDGFK1' placeholder="entrer un codeDGFK1 "><br><br>
-        <label>Code DHFK2 :</label>
-        <input type= 'text' name='codeDGFK2' placeholder="entrer un codeDGFK2 "><br><br>
-        <label>Etat d'entreprises :</label>
-        <input type= 'text' name='EtatEntre' placeholder="entrer un Etat"><br><br>
+        <input type= 'text' name='fax' placeholder="entrer fax"><br><br>
+        <label>site Web :</label>
+        <input type= 'text' name='siteWeb' placeholder="entrer le site Web"><br><br>
+        <label>full Name Contact :</label>
+        <input type= 'text' name='fullNameContact' placeholder="entrer full Name Contact"><br><br>
+        <label>Gsm Contact :</label>
+        <input type= 'text' name='gsmContact' placeholder="entrer un Gsm Contact"><br><br>
+        <label>logo Pole :</label>
+        <input type= 'text' name='logoPL' placeholder="entrer logo"><br><br>
+        <label>Code DPLFK1 :</label>
+        <input type= 'text' name='codeDPLFK1' placeholder="entrer un codeDPLFK1"><br><br>
+        <label>code DPLFK2 :</label>
+        <input type= 'text' name='codeDPLFK2' placeholder="entrer un codeDPLFK2"><br><br>
+
         </div>
 
         </div><br>

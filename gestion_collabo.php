@@ -123,48 +123,64 @@ background-color: #46A75C;
         <legend class="entr">Collaborateurs</legend><br><br><br>
         <div class="Global">
         
-        <!--div col2-->
+        <!--div col1-->
         <div class="col1" >
-        <label>Code Entreprises : </label>
-        <input type='text' name='CodeEntr' placeholder="entrer code of user"><br><br>
-        <label>Nom d'entreprises:</label>
-        <input type='text' name ='NomEntr' placeholder="entrer le Nom"><br><br>
-        <label>Description :</label>
-        <input type='text' name='_description' placeholder="entrer une description"><br><br>
-        <label>Secteur Entreprises :</label>
-        <input type= 'text' name='SecteurEntre' placeholder="entrer un secteur "><br><br>
-        <label>Adresse  : </label>
-        <input type= 'text' name='adresse' placeholder="entrer adresse "><br><br>
-        <label>Ville :</label>
-        <input type= 'text' name='ville' placeholder="entrer ville"><br><br>
-        <label>Code postal :</label>
-        <input type= 'text' name='codePostal' placeholder="entrer un codePostal "><br><br>
-        <label>Pays :</label>
-        <input type= 'text' name='pays' placeholder="entrer Pays "><br><br>
+        <label>Matricule : </label>
+        <input type='text' name='matricule' placeholder="entrer Matriculation"><br><br>
+        <label>Code d'entreprises:</label>
+        <input type='text' name ='CodeEntrFK' placeholder="entrer l'entreprise"><br><br>
+        <label>Nom Collaborateur :</label>
+        <input type='text' name='nom' placeholder="entrer nom"><br><br>
+        <label>Prenom Collaborateur :</label>
+        <input type= 'text' name='prenom' placeholder="entrer Prenom"><br><br>
+        <label>النسب  : </label>
+        <input type= 'text' name='nomArabe' placeholder="النسب"><br><br>
+        <label>الاسم :</label>
+        <input type= 'text' name='prenomArabe' placeholder="الاسم"><br><br>
+        <label>Code National :</label>
+        <input type= 'text' name='cin' placeholder="entrer cin "><br><br>
+        <label>Civilité :</label>
+        <input type= 'text' name='civilite' placeholder="entrer etat civil "><br><br>
+        <label>Nationalite :</label>
+        <input type= 'text' name='nationalite' placeholder="entrer nationalite "><br><br>
         <label>Email :</label>
         <input type= 'text' name='email' placeholder="entrer un Email "><br><br>
+        <label>Gsm :</label>
+        <input type= 'text' name='gsm' placeholder="entrer numero de telephone "><br><br>
+        <label>Adresse :</label>
+        <input type= 'text' name='adresse' placeholder="entrer l'Adresse "><br><br>
+        <label>Ville :</label>
+        <input type= 'text' name='ville' placeholder="entrer la Ville "><br><br>
         </div>
 
         <!--div col2-->
         <div class="col2">
-        <label>Fixe :</label>
-        <input type= 'text' name='fixe' placeholder="entrer le fix "><br><br>
-        <label>Fax :</label>
-        <input type= 'text' name='fax' placeholder="entrer fax "><br><br>
-        <label>Site Web :</label>
-        <input type= 'text' name='siteWeb' placeholder="entrer siteWeb "><br><br> 
-        <label>Full Name Contact :</label>
-        <input type= 'text' name='fullnameContact' placeholder="entrer un fillname"><br><br>
-        <label>GSM Contact :</label>
-        <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
-        <label>Logo d'entreprises :</label>
-        <input type= 'text' name='logoEntre' placeholder="entrer un logo "><br><br>
-        <label>Code DGFK1 :</label>
-        <input type= 'text' name='codeDGFK1' placeholder="entrer un codeDGFK1 "><br><br>
-        <label>Code DHFK2 :</label>
-        <input type= 'text' name='codeDGFK2' placeholder="entrer un codeDGFK2 "><br><br>
-        <label>Etat d'entreprises :</label>
-        <input type= 'text' name='EtatEntre' placeholder="entrer un Etat"><br><br>
+        <label>code Postal :</label>
+        <input type= 'text' name='codePostal' placeholder="entrer le code Postal"><br><br>
+        <label>Pays :</label>
+        <input type= 'text' name='pays' placeholder="entrer Pays "><br><br>
+        <label>Photo :</label>
+        <input type= 'text' name='photo' placeholder="entrer photo"><br><br> 
+        <label>Fonction :</label>
+        <input type= 'text' name='Fonction' placeholder="Fonctionement"><br><br>
+        <label>Grade :</label>
+        <input type= 'text' name='grade' placeholder="entrer un grade"><br><br>
+        <label>Echelle :</label>
+        <input type= 'text' name='echelle' placeholder="entrer l'echelle "><br><br>
+        <label>Echellon :</label>
+        <input type= 'text' name='echellon' placeholder="entrer l'echellon"><br><br>
+        <label>Description :</label>
+        <input type= 'text' name='_description' placeholder="entrer La Description "><br><br>
+        <label>Code Service :</label>
+        <input type= 'text' name='codeSrvFK1' placeholder="entrer Le Code Service"><br><br>
+        <label>Code Entreprise :</label>
+        <input type= 'text' name='codeEntrFK2' placeholder="entrer Code d'Entreprise"><br><br>
+        <label>Type De Contrat :</label>
+        <input type= 'text' name='typeContrat' placeholder="entrer le Type Contrat"><br><br>
+        <label>Numero de Contrat :</label>
+        <input type= 'text' name='numContrat' placeholder="entrer Numero De Contrat"><br><br>
+        <label>Etat Collaborateur :</label>
+        <input type= 'text' name='etatColabo' placeholder="entrer l'Etat Collaborateur"><br><br>
         </div>
 
         </div><br>

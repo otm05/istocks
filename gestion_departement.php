@@ -118,21 +118,25 @@ background-color: #D03939;
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
-<form action="gestion_Poles.php" method="get" id="frm1">
+<form action="gestion_departement.php" method="get" id="frm1">
     <fieldset>
-        <legend class="entr">Poles</legend><br><br><br>
+        <legend class="entr">Departements</legend><br><br><br>
         <div class="Global">
         
-        <!--div col2-->
+        <!--div col1-->
         <div class="col1" >
-        <label>Code Entreprises : </label>
-        <input type='text' name='CodeEntr' placeholder="entrer code of user"><br><br>
-        <label>Nom d'entreprises:</label>
-        <input type='text' name ='NomEntr' placeholder="entrer le Nom"><br><br>
+        <label>Code Departements : </label>
+        <input type='text' name='codeDep' placeholder="entrer code departement"><br><br>
+        <label>Code Entreprise : </label>
+        <input type='text' name='CodeEntrFK' placeholder="entrer code d'Entreprise"><br><br>
+        <label>Code Pole : </label>
+        <input type='text' name='CodePLFK' placeholder="entrer code Pole"><br><br>
+        <label>Nom Departement:</label>
+        <input type='text' name ='NomDep' placeholder="entrer le Nom"><br><br>
         <label>Description :</label>
         <input type='text' name='_description' placeholder="entrer une description"><br><br>
-        <label>Secteur Entreprises :</label>
-        <input type= 'text' name='SecteurEntre' placeholder="entrer un secteur "><br><br>
+        <label>Secteur Departement :</label>
+        <input type= 'text' name='secteurPL' placeholder="entrer un secteur "><br><br>
         <label>Adresse  : </label>
         <input type= 'text' name='adresse' placeholder="entrer adresse "><br><br>
         <label>Ville :</label>
@@ -141,12 +145,12 @@ background-color: #D03939;
         <input type= 'text' name='codePostal' placeholder="entrer un codePostal "><br><br>
         <label>Pays :</label>
         <input type= 'text' name='pays' placeholder="entrer Pays "><br><br>
-        <label>Email :</label>
-        <input type= 'text' name='email' placeholder="entrer un Email "><br><br>
         </div>
 
         <!--div col2-->
         <div class="col2">
+        <label>Email :</label>
+        <input type= 'text' name='email' placeholder="entrer un Email "><br><br>
         <label>Fixe :</label>
         <input type= 'text' name='fixe' placeholder="entrer le fix "><br><br>
         <label>Fax :</label>
@@ -154,17 +158,15 @@ background-color: #D03939;
         <label>Site Web :</label>
         <input type= 'text' name='siteWeb' placeholder="entrer siteWeb "><br><br> 
         <label>Full Name Contact :</label>
-        <input type= 'text' name='fullnameContact' placeholder="entrer un fillname"><br><br>
+        <input type= 'text' name='fullnameContact' placeholder="entrer full name"><br><br>
         <label>GSM Contact :</label>
         <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
         <label>Logo d'entreprises :</label>
-        <input type= 'text' name='logoEntre' placeholder="entrer un logo "><br><br>
-        <label>Code DGFK1 :</label>
-        <input type= 'text' name='codeDGFK1' placeholder="entrer un codeDGFK1 "><br><br>
-        <label>Code DHFK2 :</label>
-        <input type= 'text' name='codeDGFK2' placeholder="entrer un codeDGFK2 "><br><br>
-        <label>Etat d'entreprises :</label>
-        <input type= 'text' name='EtatEntre' placeholder="entrer un Etat"><br><br>
+        <input type= 'text' name='logoDep' placeholder="entrer un logo "><br><br>
+        <label>Code collabo :</label>
+        <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo "><br><br>
+        <label>Code collabo2 :</label>
+        <input type= 'text' name='codeDCDFK2' placeholder="entrer un collabo2 "><br><br>
         </div>
 
         </div><br>
