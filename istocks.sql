@@ -23,7 +23,6 @@ create table Entreprises
     codeDGFK2 varchar(20) null,
     EtatEntr varchar(3) not null,
     constraint EtatEntr_pk1 check (EtatEntr in ('A','D','AC','R'))
-    
 );
 alter table Entreprises add foreign key (codeDGFK1) references Collaborateurs(CodeEntrFK);
 
@@ -96,11 +95,13 @@ alter table Departements add foreign key (CodePLFK) references Poles(codePL);
 alter table Departements add foreign key (codeCDFK1) references Collaborateurs(CodeEntrFK);
 --Departements :
 
-insert into Departements values('D1','E1','P1','shop','xxxxx12','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD');
-insert into Departements values('D2','E1','P1','ffffff','xxxxx88','r','Dd','FD','DFR','FFFFF','DGD','DD','DD','DD','DD','DD','DD','DD');
-insert into Departements values('D3','E1','P3','xxxxx897','a','r','Dd','FD','FGHF','FGHFGH','DD','DD','DD','DD','DD','DD','DD','DD');
-insert into Departements values('D4','E1','P1','ffffff','xxxxx9087','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD');
-insert into Departements values('D5','E5','P1','ffffff','xxxxx09879','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD');
+insert into Departements values('D1','E1','P1','shop','xxxxx12','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD','FFFD');
+insert into Departements values('D2','E1','P1','ffffff','xxxxx88','r','Dd','FD','DFR','FFFFF','DGD','DD','DD','DD','DD','DD','DD','DD','FFFD');
+insert into Departements values('D3','E1','P3','xxxxx897','a','r','Dd','FD','FGHF','FGHFGH','DD','DD','DD','DD','DD','DD','DD','DD','FFFD');
+insert into Departements values('D4','E1','P1','ffffff','xxxxx9087','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD','FFFD');
+insert into Departements values('D5','E5','P1','ffffff','xxxxx09879','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD','FFFD');
+
+update Services set NomSrv='GERRR' , _description='FFFFF' , fix='0000000' , fax='00000000000' where codeSrv='s2';
 
 
 create table Services
@@ -126,6 +127,7 @@ alter table Services add foreign key (codeCDFK1) references Collaborateurs(CodeE
 
 
 --Services : 
+insert into Services values('Ser1','','','shoping','xxxxx12','053566845','053566845','','');
 insert into Services values('S1','E1','D1','shop','xxxxx12','r','Dd','FD','DFR');
 insert into Services values('S2','E1','D1','ffffff','xxxxx88','r','Dd','FD','DFR');
 insert into Services values('S3','E3','D3','xxxxx897','a','r','Dd','FD','FGHF');

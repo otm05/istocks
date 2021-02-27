@@ -2,105 +2,232 @@
 <?php
 include("head_istocks.php");
 include_once("connection.php");
-$CodeEntr="";
-$nomentr="";
+$codeSrv="";
+$CodeEntrFK="";
+$CodeDepFK="";
+$NomSrv="";
 $_description="";
-$SecteurEntre="";
-$adresse="";
-$ville="";
-$codePostal="";
-$pays="";
-$email="";
-$fixe="";
+$fix="";
 $fax="";
-$siteWeb="";
-$fullnameContact="";
-$gsmcontact="";
-$logoEntre="";
-$codeDGFK1="";
-$codeDGFK2="";
-$EtatEntre="";
-if(isset($_GET))
+$codeCDFK1="";
+$codeDCDFK2="";
+
+if(isset($_GET) && count($_GET)>0)
 {
-    if(isset($_GET['CodeEntr']))
+    if(isset($_GET['codeSrv']))
     {
-        $CodeEntr=$_GET['CodeEntr'];
+        $codeSrv=$_GET['codeSrv'];
     }
-    if(isset($_GET['nomentr']))
+    if(isset($_GET['CodeEntrFK']))
     {
-        $nomentr=$_GET['nomentr'];
+        $CodeEntrFK=$_GET['CodeEntrFK'];
+    }
+    if(isset($_GET['CodeDepFK']))
+    {
+        $CodeDepFK=$_GET['CodeDepFK'];
+    }
+    if(isset($_GET['NomSrv']))
+    {
+        $NomSrv=$_GET['NomSrv'];
     }
     if(isset($_GET['_description']))
     {
         $_description=$_GET['_description'];
     }
-    if(isset($_GET['SecteurEntre']))
+    if(isset($_GET['fix']))
     {
-        $SecteurEntre=$_GET['SecteurEntre'];
-    }
-    if(isset($_GET['adresse']))
-    {
-        $adresse=$_GET['adresse'];
-    }
-    if(isset($_GET['ville']))
-    {
-        $ville=$_GET['ville'];
-    }
-    if(isset($_GET['codePostal']))
-    {
-        $codePostal=$_GET['codePostal'];
-    }
-    if(isset($_GET['pays']))
-    {
-        $pays=$_GET['pays'];
-    }
-    if(isset($_GET['email']))
-    {
-        $email=$_GET['email'];
-    }
-    if(isset($_GET['fixe']))
-    {
-        $fixe=$_GET['fixe'];
+        $fix=$_GET['fix'];
     }
     if(isset($_GET['fax']))
     {
         $fax=$_GET['fax'];
     }
-    if(isset($_GET['siteWeb']))
+    if(isset($_GET['codeCDFK1']))
     {
-        $siteWeb=$_GET['siteWeb'];
+        $codeCDFK1=$_GET['codeCDFK1'];
     }
-    if(isset($_GET['fullnameContact']))
+    if(isset($_GET['codeDCDFK2']))
     {
-        $fullnameContact=$_GET['fullnameContact'];
+        $codeDCDFK2=$_GET['codeDCDFK2'];
     }
-    if(isset($_GET['gsmcontact']))
+ 
+    //pour ajouter
+    if($_GET['add']=="Ajouter")
     {
-        $gsmcontact=$_GET['gsmcontact'];
+        $ss=0;
+        $drA = $cnx->query("select * from Services;");
+        while($row1=$drA->fetch()){
+            if($row1['codeSrv']==$codeSrv)
+            {
+                $ss=1;
+            }
+        }
+        $drA->closeCursor();
+        if($ss==1)
+        {
+            $rep="Existe Déjà";
+        }
+        else if($ss==0)
+        {
+            ExecuteNonQuery($cnx,"insert into Services values('$codeSrv','$CodeEntrFK','$CodeDepFK','$NomSrv','$_description','$fix','$fax','$codeCDFK1','$codeDCDFK2');");
+            $rep="Bien Ajouter";
+        }
+        
     }
-    if(isset($_GET['logoEntre']))
+    //pour Supprimer
+    if($_GET['add']=="Supprimer")
     {
-        $logoEntre=$_GET['logoEntre'];
+        $ss=0;
+        $drA = $cnx->query("select * from Services;");
+        while($row1=$drA->fetch()){
+            if($row1['codeSrv']==$codeSrv)
+            {
+                $ss=1;
+            }
+        }
+        $drA->closeCursor();
+        if($ss==1)
+        {
+            ExecuteNonQuery($cnx,"delete from Services where codeSrv = '$codeSrv';");
+            $rep="Bien Supprimer";
+        }
+        else if($ss==0)
+        {
+            $rep="n'existe pas pour Supprimer";
+        }
     }
-    if(isset($_GET['codeDGFK1']))
+    //pour Modifier
+    if($_GET['add']=="Modifier")
     {
-        $codeDGFK1=$_GET['codeDGFK1'];
-    }
-    if(isset($_GET['codeDGFK2']))
-    {
-        $codeDGFK2=$_GET['codeDGFK2'];
-    }
-    if(isset($_GET['CodeEntr']))
-    {
-        $CodeEntr=$_GET['CodeEntr'];
+        $ss=0;
+        $drA = $cnx->query("select * from Services;");
+        while($row1=$drA->fetch()){
+            if($row1['codeSrv']==$codeSrv)
+            {
+                $ss=1;
+            }
+        }
+        $drA->closeCursor();
+        if($ss==1)
+        {
+            ExecuteNonQuery($cnx,"update Services set CodeEntrFK='$CodeEntrFK' , CodeDepFK='$CodeDepFK' , NomSrv='$NomSrv' , _description='$_description' , fix='$fix' , fax='$fax' , codeCDFK1='$codeCDFK1' , codeCDFK2='$codeDCDFK2' where codeSrv='$codeSrv';");
+            $rep="Bien modifier";
+        }
+        else if($ss==0)
+        {
+            $rep="n'existe pas pour modifier";
+        }
+        
     }
 }
+$dr_entr_combo=ExecuteReader($cnx,"select CodeEntr,NomEntr from Entreprises");
+$dr_Dep_combo=ExecuteReader($cnx,"select codeDep,NomDep from Departements");
+
 ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="JQ/dist/jquery.validate.min.js"></script>
+<script>
+    $(function() {
+
+        $("#btnAdd").on("click",function(){
+    $("#frm1").validate
+    ({
+        rules: {
+            codeSrv: {required:true},
+            CodeEntrFK: {required:true},
+            CodeDepFK : {required:true},
+            NomSrv : {required:true},
+    
+            fix:{
+            required: true,
+            number: true
+            },
+    
+            fax:{
+            number: true
+            },
+          },
+
+          messages: {
+            codeSrv: {required:'veuillez insérer code Service *'},
+            CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
+            CodeDepFK : {required:'veuillez indiquer Quel Departement *'},
+            NomSrv : {required:'veuillez insérer code Service *'},
+            fix: {required:'veuillez insérer un numéro de téléphone *',number: 'saisi des chiffre svp !!! *'},
+            fax: {number:'saisi des chiffre svp !!! *'}
+          },
+    });
+  });
+
+  $("#btnSup").on("click",function(){
+    $("#frm1").validate
+    ({
+        rules: {
+            codeSrv: {required:true},
+          },
+
+          messages: {
+            codeSrv: {required:'veuillez insérer code Service *'}
+          },
+    });
+  });
+
+  $("#btnMod").on("click",function(){
+    $("#frm1").validate
+    ({
+        rules: {
+            codeSrv: {required:true},
+            CodeEntrFK: {required:true},
+            CodeDepFK : {required:true},
+            NomSrv : {required:true},
+    
+            fix:{
+            required: true,
+            number: true
+            },
+    
+            fax:{
+            number: true
+            },
+          },
+
+          messages: {
+            codeSrv: {required:'veuillez insérer code Service *'},
+            CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
+            CodeDepFK : {required:'veuillez indiquer Quel Departement *'},
+            NomSrv : {required:'veuillez insérer code Service *'},
+            fix: {required:'veuillez insérer un numéro de téléphone *',number: 'saisi des chiffre svp !!! *'},
+            fax: {number:'saisi des chiffre svp !!! *'}
+          },
+    });
+  });
+});
+</script>
 <br><br><br><br><br>
 <style>
-    .nav-links a:hover{
-    background-color: rgb(91, 173, 187);
-    color: rgb(32, 31, 31);
+.nav-links a:hover{
+background-color: rgb(91, 173, 187);
+color: rgb(32, 31, 31);
+}
+.error{
+    color: red;
+    font-size: 14px;
+}
+#sel{
+height:34px ;
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+width: 95%;
+clear: both;
+}
+#sel2{
+height:34px ;
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+width: 95%;
+clear: both;
 }
 </style>
 <!-- commencer le Nv code HTML -->
@@ -109,41 +236,58 @@ if(isset($_GET))
     <fieldset>
         <legend class="entr">Services</legend><br><br><br>
         <div class="Global">
-        
         <!--div col1-->
         <div class="col1" >
         <label>Code Service : </label>
-        <input type='text' name='codeSrv' placeholder="entrer code Service"><br><br>
-        <label>Code Entreprise :</label>
-        <input type= 'text' name='CodeEntrFK' placeholder="entrer code Entreprise "><br><br>
+        <input type='text' name='codeSrv' placeholder="entrer code Service" ><br><br>
+        <label>Entreprise :</label>
+        <select name="CodeEntrFK" id="sel" >
+            <option value="">--Select Entreprise--</option>
+            <?php while($combo1=$dr_entr_combo->fetch()){?>
+            <option value="<?php echo($combo1['CodeEntr']); ?>"><?php echo($combo1['NomEntr']); ?></option>
+            <?php }$dr_entr_combo->closeCursor(); ?>
+        </select>
+        <br><br>
         <label>Code Departement :</label>
-        <input type= 'text' name='CodeDepFK' placeholder="entrer code Departement "><br><br>
-        <label>Nom Service :</label>
-        <input type= 'text' name='NomSrv' placeholder="entrer Nom Service "><br><br>
+        <select name="CodeDepFK" id="sel2" >
+            <option value="">--Select Departements--</option>
+            <?php while($combo2=$dr_Dep_combo->fetch()){?>
+            <option value="<?php echo($combo2['codeDep']); ?>"><?php echo($combo2['NomDep']); ?></option>
+        <?php }$dr_Dep_combo->closeCursor(); ?>
+        </select>
+        <br><br>
+        <label>Nom Service :</label><br>
+        <input type= 'text' name='NomSrv' placeholder="entrer Nom Service" ><br><br>
         <label>Description :</label>
-        <input type= 'text' name='_description' placeholder="entrer Description "><br><br>
+        <input type= 'text' name='_description' placeholder="entrer Description" ><br><br>
         </div>
 
         <!--div col2-->
         <div class="col2">
         <label>Fix :</label>
-        <input type= 'text' name='fix' placeholder="entrer Fix "><br><br>
+        <input type= 'text' name='fix' placeholder="entrer Fix" ><br><br>
         <label>Fax :</label>
-        <input type= 'text' name='fax' placeholder="entrer fax "><br><br>
+        <input type= 'text' name='fax' placeholder="entrer fax" ><br><br>
         <label>Code collabo :</label>
-        <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo "><br><br>
+        <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo" ><br><br>
         <label>Code collabo2 :</label>
-        <input type= 'text' name='codeDCDFK2' placeholder="entrer un collabo2 "><br><br>
+        <input type= 'text' name='codeDCDFK2' placeholder="entrer un collabo2" ><br><br>
         </div>
 
         </div><br>
         <div class="div_butt">
-        <input type="submit" name="add" value="Ajouter">
-        <input type="submit" name="add" value="Supprimer">
-        <input type="submit" name="add" value="Modifier">
+        <input id="btnAdd" type="submit" name="add" value="Ajouter" onclick="Rep()">
+        <input id="btnSup" type="submit" name="add" value="Supprimer" >
+        <input id="btnMod" type="submit" name="add" value="Modifier" >
         </div>
         <br>
         </fieldset>
         </form>
         </body>
+        <script>
+            function Rep(){
+            let x = "<?php echo($rep); ?>";
+            alert(x);
+            }
+        </script>
         </html>
