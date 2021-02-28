@@ -122,86 +122,94 @@ if(isset($_GET) && count($_GET)>0)
 }
 $dr_entr_combo=ExecuteReader($cnx,"select CodeEntr,NomEntr from Entreprises");
 $dr_Dep_combo=ExecuteReader($cnx,"select codeDep,NomDep from Departements");
+$dr_affiche=ExecuteReader($cnx,"select * from services");
 
 ?>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="JQ/dist/jquery.validate.min.js"></script>
-<script>
-    $(function() {
 
+    
+    <script>
+
+        
+$(function() {
+        //exception validateur modification
         $("#btnAdd").on("click",function(){
-    $("#frm1").validate
-    ({
-        rules: {
-            codeSrv: {required:true},
-            CodeEntrFK: {required:true},
-            CodeDepFK : {required:true},
-            NomSrv : {required:true},
-    
-            fix:{
-            required: true,
-            number: true
-            },
-    
-            fax:{
-            number: true
-            },
-          },
+            $("#frm1").validate
+            ({
+                rules: {
+                    codeSrv: {required:true},
+                    CodeEntrFK: {required:true},
+                    CodeDepFK : {required:true},
+                    NomSrv : {required:true},
 
-          messages: {
-            codeSrv: {required:'veuillez insérer code Service *'},
-            CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
-            CodeDepFK : {required:'veuillez indiquer Quel Departement *'},
-            NomSrv : {required:'veuillez insérer code Service *'},
-            fix: {required:'veuillez insérer un numéro de téléphone *',number: 'saisi des chiffre svp !!! *'},
-            fax: {number:'saisi des chiffre svp !!! *'}
-          },
-    });
-  });
+                    fix:{
+                    required: true,
+                    number: true
+                    },
 
-  $("#btnSup").on("click",function(){
-    $("#frm1").validate
-    ({
-        rules: {
-            codeSrv: {required:true},
-          },
+                    fax:{
+                    number: true
+                    },
+                    },
 
-          messages: {
-            codeSrv: {required:'veuillez insérer code Service *'}
-          },
-    });
-  });
+                    messages: {
+                    codeSrv: {required:'veuillez insérer code Service *'},
+                    CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
+                    CodeDepFK : {required:'veuillez indiquer Quel Departement *'},
+                    NomSrv : {required:'veuillez insérer code Service *'},
+                    fix: {required:'veuillez insérer un numéro de téléphone *',number: 'saisi des chiffre svp !!! *'},
+                    fax: {number:'saisi des chiffre svp !!! *'}
+                    },
+            });
+            });
 
-  $("#btnMod").on("click",function(){
-    $("#frm1").validate
-    ({
-        rules: {
-            codeSrv: {required:true},
-            CodeEntrFK: {required:true},
-            CodeDepFK : {required:true},
-            NomSrv : {required:true},
-    
-            fix:{
-            required: true,
-            number: true
-            },
-    
-            fax:{
-            number: true
-            },
-          },
+        //exception validateur Suppression
+        $("#btnSup").on("click",function(){
+            $("#frm1").validate
+            ({
+                rules: {
+                    codeSrv: {required:true},
+                    },
 
-          messages: {
-            codeSrv: {required:'veuillez insérer code Service *'},
-            CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
-            CodeDepFK : {required:'veuillez indiquer Quel Departement *'},
-            NomSrv : {required:'veuillez insérer code Service *'},
-            fix: {required:'veuillez insérer un numéro de téléphone *',number: 'saisi des chiffre svp !!! *'},
-            fax: {number:'saisi des chiffre svp !!! *'}
-          },
-    });
-  });
+                    messages: {
+                    codeSrv: {required:'veuillez insérer code Service *'}
+                    },
+            });
+            });
+
+        //exception validateur modification
+        $("#btnMod").on("click",function(){
+            $("#frm1").validate
+            ({
+                rules: {
+                    codeSrv: {required:true},
+                    CodeEntrFK: {required:true},
+                    CodeDepFK : {required:true},
+                    NomSrv : {required:true},
+
+                    fix:{
+                    required: true,
+                    number: true
+                    },
+
+                    fax:{
+                    number: true
+                    },
+                    },
+
+                    messages: {
+                    codeSrv: {required:'veuillez insérer code Service *'},
+                    CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
+                    CodeDepFK : {required:'veuillez indiquer Quel Departement *'},
+                    NomSrv : {required:'veuillez insérer code Service *'},
+                    fix: {required:'veuillez insérer un numéro de téléphone *',number: 'saisi des chiffre svp !!! *'},
+                    fax: {number:'saisi des chiffre svp !!! *'}
+                    },
+            });
+        });
 });
+
 </script>
 <br><br><br><br><br>
 <style>
@@ -229,6 +237,38 @@ font-size: 14px;
 width: 95%;
 clear: both;
 }
+
+/*Style of my table*/
+#mytable {
+margin-left: 5px;
+margin-right: 5px;
+font-family: Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+text-align: left;
+}
+
+#mytable td, #customers th {
+border: 1px solid #ddd;
+padding: 9px;
+}
+
+#mytable tr:nth-child(even){
+background-color: #f2f2f2;
+}
+
+#mytable tr:hover {
+background-color: #ddd;
+}
+
+#mytable th {
+height: 60px;
+padding-top: 12px;
+padding-bottom: 12px;
+background-color: rgb(91, 173, 187);
+color: white;
+}
+/*Fin style mytable*/
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
@@ -248,7 +288,7 @@ clear: both;
             <?php }$dr_entr_combo->closeCursor(); ?>
         </select>
         <br><br>
-        <label>Code Departement :</label>
+        <label>Departement :</label>
         <select name="CodeDepFK" id="sel2" >
             <option value="">--Select Departements--</option>
             <?php while($combo2=$dr_Dep_combo->fetch()){?>
@@ -276,13 +316,25 @@ clear: both;
 
         </div><br>
         <div class="div_butt">
-        <input id="btnAdd" type="submit" name="add" value="Ajouter" onclick="Rep()">
+        <input id="btnAdd" type="submit" name="add" value="Ajouter" >
         <input id="btnSup" type="submit" name="add" value="Supprimer" >
         <input id="btnMod" type="submit" name="add" value="Modifier" >
         </div>
         <br>
         </fieldset>
         </form>
+        <br>
+        <?php
+        if(isset($dr_affiche)){
+            if($dr_affiche->rowCount()>0){   
+        ?>
+        <table id="mytable">
+        <tr><th>Code Service</th><th>Entreprise</th><th>Departement</th><th>Nom Service</th><th>Description</th><th>Fix</th><th>Fax</th><th>Code collabo</th><th>Code collabo2</th></tr>
+        <?php while($xtr=$dr_affiche->fetch()){?>
+            <tr><td><?php echo($xtr['codeSrv']); ?></td><td><?php echo($xtr['CodeEntrFK']); ?></td><td><?php echo($xtr['CodeDepFK']); ?></td><td><?php echo($xtr['NomSrv']); ?></td><td><?php echo($xtr['_description']); ?></td><td><?php echo($xtr['fix']); ?></td><td><?php echo($xtr['fax']); ?></td><td><?php echo($xtr['codeCDFK1']); ?></td><td><?php echo($xtr['codeCDFK2']); ?></td></tr>
+        <?php }$dr_affiche->closeCursor(); ?>
+        </table>
+        <?php }} ?>
         </body>
         <script>
             function Rep(){
