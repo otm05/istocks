@@ -1,0 +1,48 @@
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 1px solid goldenrod;
+    border-bottom-left-radius: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    }
+    
+    a:hover, a:active {
+    background-color: goldenrod;
+    color: white;
+    }
+    .main_filter{
+    border-radius: 8px;
+    border: 1px solid goldenrod;
+    }
+    .title_filter{
+    padding: 8px;
+    border: 1px solid goldenrod;
+    background: goldenrod;
+    border-radius: 4px;
+    }
+    .filter{
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    }
+    /*div 2*/
+    .main_liste{
+    border-radius: 8px;
+    border: 1px solid rgb(30, 137, 179);;
+    }
+    .title_liste{
+    padding: 8px;
+    border: 1px solid rgb(30, 137, 179);;
+    background: rgb(30, 137, 179);
+    border-radius: 4px;
+    }
+    .liste{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    }

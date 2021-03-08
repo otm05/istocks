@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-
+    <link rel = "icon" href="img/logo_title1.png" type ="image/x-icon">
     <link rel="stylesheet" href="css/style_Gestion.css">
     <link rel="stylesheet" href="css/style1.css">
 
@@ -24,11 +24,11 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="gestion_poles.php">poles</a></li>
-            <li><a href="gestion_departement.php">departements</a></li>
-            <li><a href="gestion_services.php">services</a></li>
-            <li><a href="gestion_collabo.php">collaborateurs</a></li>
-            <li><a href="gestion_entreprise.php">entreprise</a></li>
+            <!--<li><a href="gestion_poles.php">poles</a></li>-->
+            <li><a href="Cslt_dep.php">departements</a></li>
+            <li><a href="Cslt_Services.php">services</a></li>
+            <li><a href="Cslt_Collabo.php">collaborateurs</a></li>
+            <!--<li><a href="gestion_entreprise.php">entreprise</a></li>-->
             <li><a href="contactus.php">Contact us</a></li>
         </ul>
         <div class="menu_barre">

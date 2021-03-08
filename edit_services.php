@@ -1,6 +1,9 @@
 <!-- on va appeler le header -->
 <?php
 include_once("connection.php");
+$dr_entr_combo=ExecuteReader($cnx,"select CodeEntr,NomEntr from Entreprises");
+$dr_Dep_combo=ExecuteReader($cnx,"select codeDep,NomDep from Departements");
+
 $codeSrv="";
 $CodeEntrFK="";
 $CodeDepFK="";
@@ -9,65 +12,89 @@ $_description="";
 $fix="";
 $fax="";
 $codeCDFK1="";
-$codeDCDFK2="";
+$codeCDFK2="";
 
-$dr_entr_combo=ExecuteReader($cnx,"select CodeEntr,NomEntr from Entreprises");
-$dr_Dep_combo=ExecuteReader($cnx,"select codeDep,NomDep from Departements");
 
-if(isset($_GET) && count($_GET)>0)
-{
+
     if(isset($_GET['codeSrv']))
     {
         $codeSrv=$_GET['codeSrv'];
-    }
-    if(isset($_GET['CodeEntrFK']))
-    {
-        $CodeEntrFK=$_GET['CodeEntrFK'];
-    }
-    if(isset($_GET['CodeDepFK']))
-    {
-        $CodeDepFK=$_GET['CodeDepFK'];
-    }
-    if(isset($_GET['NomSrv']))
-    {
-        $NomSrv=$_GET['NomSrv'];
-    }
-    if(isset($_GET['_description']))
-    {
-        $_description=$_GET['_description'];
-    }
-    if(isset($_GET['fix']))
-    {
-        $fix=$_GET['fix'];
-    }
-    if(isset($_GET['fax']))
-    {
-        $fax=$_GET['fax'];
-    }
-    if(isset($_GET['codeCDFK1']))
-    {
-        $codeCDFK1=$_GET['codeCDFK1'];
-    }
-    if(isset($_GET['codeDCDFK2']))
-    {
-        $codeDCDFK2=$_GET['codeDCDFK2'];
-    }
- 
-    //pour ajouter
-    if($_GET['add']=="Enregistrer")
-    {  
-        ExecuteNonQuery($cnx,"insert into Services values('$codeSrv','$CodeEntrFK','$CodeDepFK','$NomSrv','$_description','$fix','$fax','$codeCDFK1','$codeDCDFK2');");
-        header("Location:Cslt_Services.php");  
-    }
-
-    if($_GET['add']=="Annuler")
-    {  
-        header("Location:Cslt_Services.php");  
+        if(!empty($codeSrv)){
+            $dr_mod=ExecuteReader($cnx,"select * from Services where codeSrv='$codeSrv'");
+            $data=$dr_mod->fetchAll();
+            $codeSrv=$data[0]['codeSrv'];
+            $CodeEntrFK=$data[0]['CodeEntrFK'];
+            $CodeDepFK=$data[0]['CodeDepFK'];
+            $NomSrv=$data[0]['NomSrv'];
+            $_description=$data[0]['_description'];
+            $fix=$data[0]['fix'];
+            $fax=$data[0]['fax'];
+            $codeCDFK1=$data[0]['codeCDFK1'];
+            $codeCDFK2=$data[0]['codeCDFK2'];
+        }
     }
     
+    if(isset($_GET) && count($_GET)>0)
+    {
+        if(isset($_GET['codeSrv']))
+        {
+            $codeSrv=$_GET['codeSrv'];
+        }
+        if(isset($_GET['CodeEntrFK']))
+        {
+            $CodeEntrFK=$_GET['CodeEntrFK'];
+        }
+        if(isset($_GET['CodeDepFK']))
+        {
+            $CodeDepFK=$_GET['CodeDepFK'];
+        }
+        if(isset($_GET['NomSrv']))
+        {
+            $NomSrv=$_GET['NomSrv'];
+        }
+        if(isset($_GET['_description']))
+        {
+            $_description=$_GET['_description'];
+        }
+        if(isset($_GET['fix']))
+        {
+            $fix=$_GET['fix'];
+        }
+        if(isset($_GET['fax']))
+        {
+            $fax=$_GET['fax'];
+        }
+        if(isset($_GET['codeCDFK1']))
+        {
+            $codeCDFK1=$_GET['codeCDFK1'];
+        }
+        if(isset($_GET['codeCDFK2']))
+        {
+            $codeCDFK2=$_GET['codeCDFK2'];
+        }
+        
+        if(!empty($_GET['add'])){
+        //pour ajouter
+            if($_GET['add']=="Enregistrer")
+            {
+                $req1="update Services set CodeEntrFK='$CodeEntrFK',CodeDepFK='$CodeDepFK',NomSrv='$NomSrv',_description='$_description',fix='$fix',fax='$fax',codeCDFK1='$codeCDFK1',codeCDFK2='$codeCDFK2' where codeSrv='$codeSrv';";
+                $reqUpd="update Services set CodeEntrFK='$CodeEntrFK' , CodeDepFK='$CodeDepFK' , NomSrv='$NomSrv' , _description='$_description' , fix='$fix' , fax='$fax' , codeCDFK1='$codeCDFK1' , codeCDFK2='$codeCDFK2' where codeSrv='$codeSrv';";
+                ExecuteNonQuery($cnx,$req1);
+                header("Location:Cslt_Services.php");  
+            }
+        }
+        if(!empty($_GET['add'])){
+            if($_GET['add']=="Annuler")
+            {  
+                header("Location:Cslt_Services.php");  
+            }
+        } 
 }
+    
 
 ?>
+<title>Edit Services</title>
+<link rel = "icon" href="img/logo_title1.png" type ="image/x-icon">
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="css/style_Gestion.css">
@@ -166,7 +193,6 @@ $(function() {
 
 </script>
 <br><br>
-<link rel = "icon" href="img/logo_title1.png" type ="image/x-icon">
 <style>
 .nav-links a:hover{
 background-color: rgb(91, 173, 187);
@@ -227,14 +253,14 @@ color: white;
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
-<form action="gestion_services.php" method="get" id="frm1">
+<form action="edit_services.php" method="get" id="frm1">
     <fieldset>
         <legend class="entr">Services</legend><br><br><br>
         <div class="Global">
         <!--div col1-->
         <div class="col1" >
         <label>Code Service : </label>
-        <input type='text' name='codeSrv' placeholder="entrer code Service" ><br><br>
+        <input type='text' name='codeSrv' placeholder="entrer Code Service" value="<?php echo($codeSrv); ?>" readonly="true"><br><br>
         <label>Entreprise :</label>
         <select name="CodeEntrFK" id="sel" >
             <option value="">--Select Entreprise--</option>
@@ -252,21 +278,21 @@ color: white;
         </select>
         <br><br>
         <label>Nom Service :</label><br>
-        <input type= 'text' name='NomSrv' placeholder="entrer Nom Service" ><br><br>
+        <input type= 'text' name='NomSrv' placeholder="entrer Nom Service" value="<?php echo($NomSrv); ?>" ><br><br>
         <label>Description :</label>
-        <input type= 'text' name='_description' placeholder="entrer Description" ><br><br>
+        <input type= 'text' name='_description' placeholder="entrer Description" value="<?php echo($_description); ?>"><br><br>
         </div>
 
         <!--div col2-->
         <div class="col2">
         <label>Fix :</label>
-        <input type= 'text' name='fix' placeholder="entrer Fix" ><br><br>
+        <input type= 'text' name='fix' placeholder="entrer Fix" value="<?php echo($fix); ?>"><br><br>
         <label>Fax :</label>
-        <input type= 'text' name='fax' placeholder="entrer fax" ><br><br>
+        <input type= 'text' name='fax' placeholder="entrer fax" value="<?php echo($fax); ?>"><br><br>
         <label>Code collabo :</label>
-        <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo" ><br><br>
+        <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo" value="<?php echo($codeCDFK1); ?>"><br><br>
         <label>Code collabo2 :</label>
-        <input type= 'text' name='codeDCDFK2' placeholder="entrer un collabo2" ><br><br>
+        <input type= 'text' name='codeCDFK2' placeholder="entrer un collabo2" value="<?php echo($codeCDFK2); ?>"><br><br>
         </div>
 
         </div><br>
@@ -284,5 +310,7 @@ color: white;
             function resetForm() {
                 document.getElementById("frm1").reset();
                 }
+                document.getElementById("CodeEntrFK").options.value="<?php echo($CodeEntrFK); ?>";
+                document.getElementById("CodeDepFK").options.value="<?php echo($CodeDepFK); ?>";
         </script>
         </html>

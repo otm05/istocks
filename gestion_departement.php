@@ -1,42 +1,54 @@
 <!-- on va appeler le header -->
 <?php
-include("head_istocks.php");
 include_once("connection.php");
-$CodeEntr="";
-$nomentr="";
+$codeDep="";
+$CodeEntrFK="";
+$CodePLFK="";
+$NomDep="";
 $_description="";
-$SecteurEntre="";
+$secteurPL="";
 $adresse="";
 $ville="";
 $codePostal="";
 $pays="";
 $email="";
-$fixe="";
+$fix="";
 $fax="";
 $siteWeb="";
-$fullnameContact="";
-$gsmcontact="";
-$logoEntre="";
-$codeDGFK1="";
-$codeDGFK2="";
-$EtatEntre="";
-if(isset($_GET))
+$fullNameContact="";
+$gsmContact="";
+$logoDep="";
+$codeCDFK1="";
+$codeDCDFK2="";
+
+$dr_entr_combo=ExecuteReader($cnx,"select CodeEntr,NomEntr from Entreprises");
+$dr_Pole_combo=ExecuteReader($cnx,"select codePL,NomPL from Poles");
+
+if(isset($_GET) && count($_GET)>0)
 {
-    if(isset($_GET['CodeEntr']))
+    if(isset($_GET['codeDep']))
     {
-        $CodeEntr=$_GET['CodeEntr'];
+        $codeDep=$_GET['codeDep'];
     }
-    if(isset($_GET['nomentr']))
+    if(isset($_GET['CodeEntrFK']))
     {
-        $nomentr=$_GET['nomentr'];
+        $CodeEntrFK=$_GET['CodeEntrFK'];
+    }
+    if(isset($_GET['CodePLFK']))
+    {
+        $CodePLFK=$_GET['CodePLFK'];
+    }
+    if(isset($_GET['NomDep']))
+    {
+        $NomDep=$_GET['NomDep'];
     }
     if(isset($_GET['_description']))
     {
         $_description=$_GET['_description'];
     }
-    if(isset($_GET['SecteurEntre']))
+    if(isset($_GET['secteurPL']))
     {
-        $SecteurEntre=$_GET['SecteurEntre'];
+        $secteurPL=$_GET['secteurPL'];
     }
     if(isset($_GET['adresse']))
     {
@@ -58,9 +70,9 @@ if(isset($_GET))
     {
         $email=$_GET['email'];
     }
-    if(isset($_GET['fixe']))
+    if(isset($_GET['fix']))
     {
-        $fixe=$_GET['fixe'];
+        $fix=$_GET['fix'];
     }
     if(isset($_GET['fax']))
     {
@@ -70,38 +82,138 @@ if(isset($_GET))
     {
         $siteWeb=$_GET['siteWeb'];
     }
-    if(isset($_GET['fullnameContact']))
+    if(isset($_GET['fullNameContact']))
     {
-        $fullnameContact=$_GET['fullnameContact'];
+        $fullNameContact=$_GET['fullNameContact'];
     }
-    if(isset($_GET['gsmcontact']))
+    if(isset($_GET['gsmContact']))
     {
-        $gsmcontact=$_GET['gsmcontact'];
+        $gsmContact=$_GET['gsmContact'];
     }
-    if(isset($_GET['logoEntre']))
+    if(isset($_GET['logoDep']))
     {
-        $logoEntre=$_GET['logoEntre'];
+        $logoDep=$_GET['logoDep'];
     }
-    if(isset($_GET['codeDGFK1']))
+    
+    if(isset($_GET['codeCDFK1']))
     {
-        $codeDGFK1=$_GET['codeDGFK1'];
+        $codeCDFK1=$_GET['codeCDFK1'];
     }
-    if(isset($_GET['codeDGFK2']))
+    if(isset($_GET['codeDCDFK2']))
     {
-        $codeDGFK2=$_GET['codeDGFK2'];
+        $codeDCDFK2=$_GET['codeDCDFK2'];
     }
-    if(isset($_GET['CodeEntr']))
-    {
-        $CodeEntr=$_GET['CodeEntr'];
+    //pour ajouter
+    if($_GET['add']=="Enregistrer")
+    {  
+        ExecuteNonQuery($cnx,"insert into Departements values('$codeDep','$CodeEntrFK','$CodePLFK','$NomDep','$_description','$secteurPL','$adresse','$ville','$codePostal','$pays','$email','$fix','$fax','$siteWeb','$fullNameContact','$gsmContact','$logoDep','$codeCDFK1','$codeDCDFK2');");
+        header("Location:Cslt_dep.php");  
+    }
+
+    if($_GET['add']=="Annuler")
+    {  
+        header("Location:Cslt_dep.php");  
     }
 }
 ?>
-<br><br><br><br><br>
+<meta charset="UTF-8">
+<link rel = "icon" href="img/logo_title1.png" type ="image/x-icon">
+<link rel="stylesheet" href="css/style_Gestion.css">
+<link rel="stylesheet" href="css/style1.css">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="JQ/dist/jquery.validate.min.js"></script>
+
+<script>
+$(function() {
+        //exception validateur modification
+        $("#btnAdd").on("click",function(){
+            $("#frm1").validate
+            ({
+                rules: 
+                    {
+                        codeDep: {required:true},
+                        CodeEntrFK: {required:true},
+                        CodePLFK : {required:true},
+                        NomDep : {required:true},
+                        ville : {required:true},
+                        pays :{required:true},
+                        adresse :{required:true},
+                        gsmContact : {
+                            required:true,
+                            number: true
+                        },
+                        email:{
+                        required: true,
+                        email: true
+                        },
+
+                        fix:{
+                        required: true,
+                        number: true
+                        },
+
+                        fax:{
+                        number: true
+                        }
+                    },
+
+                    messages: 
+                    {
+                        codeDep: {required:'veuillez insérer code Departement *'},
+                        CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
+                        CodePLFK : {required:'veuillez indiquer Quel Ploe *'},
+                        NomDep : {required:'veuillez insérer Nom Departement *'},
+
+                        ville: {required:'veuillez insérer La ville *'},
+                        pays: {required:'veuillez indiquer Pays *'},
+                        adresse : {required:'veuillez indiquer Adresse *'},
+                        gsmContact : {required:'veuillez insérer Gsm Departement *',number:'tapez des chiffre svp !!! *'},
+
+                        fix: {required:'veuillez insérer un numéro de téléphone *',number: 'tapez des chiffre svp !!! *'},
+                        email: {required:'veuillez insérer l email *',email: 'tappez email correcte !!! *'},
+                        fax: {number:'saisi des chiffre svp !!! *'}
+                    }
+            });
+        });
+
+});
+
+</script>
+<br><br>
 <style>
+.error{
+    color: blue;
+    font-size: 14px;
+}
 .nav-links a:hover{
     background-color: #D03939 ;
     color: rgb(32, 31, 31);
 }
+#sel{
+height:34px ;
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+width: 95%;
+clear: both;
+}
+#sel2{
+height:34px ;
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+width: 95%;
+clear: both;
+}
+
 input[type=submit]:hover{
 background-color:#D03939;
 }
@@ -128,9 +240,21 @@ background-color: #D03939;
         <label>Code Departements : </label>
         <input type='text' name='codeDep' placeholder="entrer code departement"><br><br>
         <label>Code Entreprise : </label>
-        <input type='text' name='CodeEntrFK' placeholder="entrer code d'Entreprise"><br><br>
+        <select name="CodeEntrFK" id="sel" >
+            <option value="">--Select Entreprise--</option>
+            <?php while($combo1=$dr_entr_combo->fetch()){?>
+            <option value="<?php echo($combo1['CodeEntr']); ?>"><?php echo($combo1['NomEntr']); ?></option>
+            <?php }$dr_entr_combo->closeCursor(); ?>
+        </select>
+        <br><br>
         <label>Code Pole : </label>
-        <input type='text' name='CodePLFK' placeholder="entrer code Pole"><br><br>
+        <select name="CodePLFK" id="sel2" >
+            <option value="">--Select Departements--</option>
+            <?php while($combo2=$dr_Pole_combo->fetch()){?>
+            <option value="<?php echo($combo2['codePL']); ?>"><?php echo($combo2['NomPL']); ?></option>
+        <?php }$dr_Pole_combo->closeCursor(); ?>
+        </select>
+        <br><br>
         <label>Nom Departement:</label>
         <input type='text' name ='NomDep' placeholder="entrer le Nom"><br><br>
         <label>Description :</label>
@@ -152,7 +276,7 @@ background-color: #D03939;
         <label>Email :</label>
         <input type= 'text' name='email' placeholder="entrer un Email "><br><br>
         <label>Fixe :</label>
-        <input type= 'text' name='fixe' placeholder="entrer le fix "><br><br>
+        <input type= 'text' name='fix' placeholder="entrer le fix "><br><br>
         <label>Fax :</label>
         <input type= 'text' name='fax' placeholder="entrer fax "><br><br>
         <label>Site Web :</label>
@@ -163,20 +287,25 @@ background-color: #D03939;
         <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
         <label>Logo d'entreprises :</label>
         <input type= 'text' name='logoDep' placeholder="entrer un logo "><br><br>
-        <label>Code collabo :</label>
+        <label>Code codeCDFK1 :</label>
         <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo "><br><br>
-        <label>Code collabo2 :</label>
+        <label>Code codeDCDFK2 :</label>
         <input type= 'text' name='codeDCDFK2' placeholder="entrer un collabo2 "><br><br>
         </div>
 
         </div><br>
         <div class="div_butt">
-        <input type="submit" name="add" value="Ajouter">
-        <input type="submit" name="add" value="Supprimer">
-        <input type="submit" name="add" value="Modifier">
+        <input id="btnAdd" type="submit" name="add" value="Enregistrer">
+        <input id="btnVider" type="submit" name="add" value="Vider" onclick="resetForm()">
+        <input id="btnAnnuler" type="submit" name="add" value="Annuler">
         </div>
         <br>
         </fieldset>
         </form>
         </body>
+        <script>
+            function resetForm() {
+                document.getElementById("frm1").reset();
+                }
+        </script>
         </html>

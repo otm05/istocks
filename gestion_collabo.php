@@ -1,42 +1,80 @@
 <!-- on va appeler le header -->
 <?php
-include("head_istocks.php");
 include_once("connection.php");
-$CodeEntr="";
-$nomentr="";
-$_description="";
-$SecteurEntre="";
+
+$matricule="";
+$CodeEntrFK="";
+$nom="";
+$prenom="";
+$nomArabe="";
+$prenomArabe="";
+$cin="";
+$civilite="";
+$nationalite="";
+$email="";
+$gsm="";
 $adresse="";
 $ville="";
 $codePostal="";
 $pays="";
-$email="";
-$fixe="";
-$fax="";
-$siteWeb="";
-$fullnameContact="";
-$gsmcontact="";
-$logoEntre="";
-$codeDGFK1="";
-$codeDGFK2="";
-$EtatEntre="";
-if(isset($_GET))
+$photo="";
+$fonction="";
+$grade="";
+$echelle="";
+$echellon="";
+$_description="";
+$codeSrvFK1="";
+$codeEntrFK2="";
+$typeContrat="";
+$numContrat="";
+$etatColabo="";
+
+
+if(isset($_GET) && count($_GET)>0)
 {
-    if(isset($_GET['CodeEntr']))
+    if(isset($_GET['matricule']))
     {
-        $CodeEntr=$_GET['CodeEntr'];
+        $matricule=$_GET['matricule'];
     }
-    if(isset($_GET['nomentr']))
+    if(isset($_GET['CodeEntrFK']))
     {
-        $nomentr=$_GET['nomentr'];
+        $CodeEntrFK=$_GET['CodeEntrFK'];
     }
-    if(isset($_GET['_description']))
+    if(isset($_GET['nom']))
     {
-        $_description=$_GET['_description'];
+        $nom=$_GET['nom'];
     }
-    if(isset($_GET['SecteurEntre']))
+    if(isset($_GET['prenom']))
     {
-        $SecteurEntre=$_GET['SecteurEntre'];
+        $prenom=$_GET['prenom'];
+    }
+    if(isset($_GET['nomArabe']))
+    {
+        $nomArabe=$_GET['nomArabe'];
+    }
+    if(isset($_GET['prenomArabe']))
+    {
+        $prenomArabe=$_GET['prenomArabe'];
+    }
+    if(isset($_GET['cin']))
+    {
+        $cin=$_GET['cin'];
+    }
+    if(isset($_GET['civilite']))
+    {
+        $civilite=$_GET['civilite'];
+    }
+    if(isset($_GET['nationalite']))
+    {
+        $nationalite=$_GET['nationalite'];
+    }
+    if(isset($_GET['email']))
+    {
+        $email=$_GET['email'];
+    }
+    if(isset($_GET['gsm']))
+    {
+        $gsm=$_GET['gsm'];
     }
     if(isset($_GET['adresse']))
     {
@@ -54,50 +92,159 @@ if(isset($_GET))
     {
         $pays=$_GET['pays'];
     }
-    if(isset($_GET['email']))
+    if(isset($_GET['photo']))
     {
-        $email=$_GET['email'];
+        $photo=$_GET['photo'];
     }
-    if(isset($_GET['fixe']))
+    if(isset($_GET['fonction']))
     {
-        $fixe=$_GET['fixe'];
+        $fonction=$_GET['fonction'];
     }
-    if(isset($_GET['fax']))
+    if(isset($_GET['grade']))
     {
-        $fax=$_GET['fax'];
+        $grade=$_GET['grade'];
     }
-    if(isset($_GET['siteWeb']))
+    if(isset($_GET['echelle']))
     {
-        $siteWeb=$_GET['siteWeb'];
+        $echelle=$_GET['echelle'];
     }
-    if(isset($_GET['fullnameContact']))
+    if(isset($_GET['echellon']))
     {
-        $fullnameContact=$_GET['fullnameContact'];
+        $echellon=$_GET['echellon'];
     }
-    if(isset($_GET['gsmcontact']))
+    if(isset($_GET['_description']))
     {
-        $gsmcontact=$_GET['gsmcontact'];
+        $_description=$_GET['_description'];
     }
-    if(isset($_GET['logoEntre']))
+    if(isset($_GET['codeSrvFK1']))
     {
-        $logoEntre=$_GET['logoEntre'];
+        $codeSrvFK1=$_GET['codeSrvFK1'];
     }
-    if(isset($_GET['codeDGFK1']))
+    if(isset($_GET['codeEntrFK2']))
     {
-        $codeDGFK1=$_GET['codeDGFK1'];
+        $codeEntrFK2=$_GET['codeEntrFK2'];
     }
-    if(isset($_GET['codeDGFK2']))
+    if(isset($_GET['typeContrat']))
     {
-        $codeDGFK2=$_GET['codeDGFK2'];
+        $typeContrat=$_GET['typeContrat'];
     }
-    if(isset($_GET['CodeEntr']))
+    if(isset($_GET['numContrat']))
     {
-        $CodeEntr=$_GET['CodeEntr'];
+        $numContrat=$_GET['numContrat'];
+    }
+    if(isset($_GET['etatColabo']))
+    {
+        $etatColabo=$_GET['etatColabo'];
+    }
+    
+    //pour Enregistrer
+    if($_GET['add']=="Enregistrer")
+    {  
+        ExecuteNonQuery($cnx,"insert into Collaborateurs values('$matricule','$CodeEntrFK','$nom','$prenom','$nomArabe','$prenomArabe','$cin','$civilite','$nationalite','$email','$gsm','$adresse','$ville','$codePostal','$pays','$photo','$fonction','$grade','$echelle','$echellon','$_description','$codeSrvFK1','$codeEntrFK2','$typeContrat','$numContrat','$etatColabo');");
+        header("Location:Cslt_Collabo.php");  
+    }
+
+    if($_GET['add']=="Annuler")
+    {  
+        header("Location:Cslt_Collabo.php");  
     }
 }
 ?>
-<br><br><br><br><br>
+<meta charset="UTF-8">
+<link rel = "icon" href="img/logo_title1.png" type ="image/x-icon">
+<link rel="stylesheet" href="css/style_Gestion.css">
+<link rel="stylesheet" href="css/style1.css">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="JQ/dist/jquery.validate.min.js"></script>
+
+<script>
+$(function(){
+        //exception validateur Enregidtrer
+        $("#btnAdd").on("click",function(){
+            $("#frm1").validate
+            ({
+                rules: 
+                    {
+                        matricule: {required:true},
+                        CodeEntrFK: {required:true},
+                        nom : {required:true},
+                        prenom : {required:true},
+                        nomArabe : {required:true},
+                        prenomArabe :{required:true},
+                        cin :{required:true},
+                        nationalite: {required:true},
+                        email:{
+                        required:true,
+                        email:true
+                        },
+                        gsm:{
+                        required:true,
+                        number:true
+                        },
+                        adresse : {required:true},
+                        ville : {required:true},
+                        codePostal :{required:true,number:true},
+                        pays :{required:true},
+                        photo: {required:true},
+                        fonction: {required:true},
+                        grade : {required:true},
+                        echelle : {required:true,number:true},
+                        echellon : {required:true,number:true},
+                        codeSrvFK1 :{required:true},
+                        codeEntrFK2 :{required:true},
+                        typeContrat : {required:true},
+                        numContrat :{required:true},
+                        etatColabo :{required:true}
+                    },
+
+                    messages: 
+                    {
+                        matricule: {required:'veuillez insérer Matricule Collaborateur *'},
+                        CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
+                        nom : {required:'veuillez indiquer Le nom *'},
+                        prenom : {required:'veuillez insérer Nom Departement *'},
+                        nomArabe : {required:'المرجو ادخال النسب'},
+                        prenomArabe :{required:'المرجو ادخال الاسم'},
+                        cin :{required:'veuillez insérer cin *'},
+                        nationalite: {required:'veuillez insérer nationalite *'},
+                        email: {required:'veuillez insérer l email *',email: 'tappez email correcte !!! *'},
+                        gsm : {required:'veuillez insérer gsm *',number:'tappez des chiffre svp *'},
+                        adresse : {required:'veuillez insérer adresse *'},
+                        ville : {required:'veuillez insérer ville *'},
+                        codePostal :{required:'veuillez insérer codePostal *',number:true},
+                        pays :{required:'veuillez insérer pays *'},
+                        photo: {required:'veuillez insérer photo *'},
+                        fonction: {required:'veuillez insérer fonction *'},
+                        grade : {required:'veuillez insérer grade *'},
+                        echelle : {required:'veuillez insérer echelle *',number:'tappez des chiffre svp *'},
+                        echellon : {required:'veuillez insérer echellon *',number:'tappez des chiffre svp *'},
+                        codeSrvFK1 :{required:'veuillez insérer Service *'},
+                        codeEntrFK2 :{required:'veuillez insérer Entreprise *'},
+                        typeContrat : {required:'selectioner un type de Contrat *'},
+                        numContrat :{required:'veuillez insérer numContrat *'},
+                        etatColabo :{required:'veuillez Selectioner etat Collaborateur *'}
+                    }
+            });
+        });
+
+});
+</script>
+
+<br><br>
 <style>
+.error{
+    color: brown;
+    font-size: 14px;
+}
 .nav-links a:hover{
     background-color: #46A75C ;
     color: rgb(32, 31, 31);
@@ -171,9 +318,9 @@ background-color: #46A75C;
         <input type= 'text' name='echellon' placeholder="entrer l'echellon"><br><br>
         <label>Description :</label>
         <input type= 'text' name='_description' placeholder="entrer La Description "><br><br>
-        <label>Code Service :</label>
+        <label>Service :</label>
         <input type= 'text' name='codeSrvFK1' placeholder="entrer Le Code Service"><br><br>
-        <label>Code Entreprise :</label>
+        <label>Entreprise :</label>
         <input type= 'text' name='codeEntrFK2' placeholder="entrer Code d'Entreprise"><br><br>
         <label>Type De Contrat :</label>
         <input type= 'text' name='typeContrat' placeholder="entrer le Type Contrat"><br><br>
@@ -185,12 +332,17 @@ background-color: #46A75C;
 
         </div><br>
         <div class="div_butt">
-        <input type="submit" name="add" value="Ajouter">
-        <input type="submit" name="add" value="Supprimer">
-        <input type="submit" name="add" value="Modifier">
+        <input id="btnAdd" type="submit" name="add" value="Enregistrer">
+        <input id="btnVider" type="submit" name="add" value="Vider" onclick="resetForm()">
+        <input id="btnAnnuler" type="submit" name="add" value="Annuler">
         </div>
         <br>
         </fieldset>
         </form>
         </body>
+        <script>
+            function resetForm() {
+                document.getElementById("frm1").reset();
+                }
+        </script>
         </html>

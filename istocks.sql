@@ -56,9 +56,9 @@ create table Poles
     codeDPLFK2 varchar(20) null
 );
 --alter table Poles add frk :
-
-alter table Poles add foreign key (codeDPLFK1) references Collaborateurs(CodeEntrFK);
 alter table Poles add foreign key (CodeEntrFK) references Entreprises(CodeEntr);
+alter table Poles add foreign key (codeDPLFK1) references Collaborateurs(CodeEntrFK);
+
 --insertion poles : 
 insert into Poles values('P1','E1','xxxxx','shop','xxxxx12','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD');
 insert into Poles values('P2','E2','cccc','ffffff','xxxxx88','r','Dd','FD','DFR','FFFFF','DGD','DD','DD','DD','DD','DD','DD','DD');
@@ -125,7 +125,7 @@ alter table Services add foreign key (CodeEntrFK) references Poles(CodeEntrFK);
 alter table Services add foreign key (CodeDepFK) references Departements(codeDep);
 alter table Services add foreign key (codeCDFK1) references Collaborateurs(CodeEntrFK);
 
-
+update Services set CodeEntrFK='D',CodeDepFK='D',NomSrv='D',_description='D',fix='0',fax='0',codeCDFK1='D',codeCDFK2='DD' where codeSrv='Ser1';
 --Services : 
 insert into Services values('Ser1','','','shoping','xxxxx12','053566845','053566845','','');
 insert into Services values('S1','E1','D1','shop','xxxxx12','r','Dd','FD','DFR');
@@ -176,8 +176,6 @@ alter table Collaborateurs add foreign key (codeEntrFK2) references Services(Cod
 
 --Collaborateurs
 
-insert into Collaborateurs values('C1','shop','xxxxx12','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','DFDD','DDfgg','A');
-insert into Collaborateurs values('C2','ffffff','xxxxx88','r','Dd','FD','DFR','FFFFF','DGD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','DFDD','DDfgg','A');
-insert into Collaborateurs values('C3','xxxxx897','a','r','Dd','FD','FGHF','FGHFGH','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','DFDD','DDfgg','AC');
-insert into Collaborateurs values('C4','ffffff','xxxxx9087','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','DFDD','DDfgg','CDD');
-insert into Collaborateurs values('C5','ffffff','xxxxx09879','r','Dd','FD','DFR','EFf','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','DFDD','DDfgg','E');
+insert into Collaborateurs values('C1','shop','xxxxx12','r','Dd','FD','C','C','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','R','DDfgg','A');
+insert into Collaborateurs values('C2','shop','xxxxx12','r','Dd','FD','C','C','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','R','DDfgg','A');
+insert into Collaborateurs values('C3','shop','xxxxx12','r','Dd','FD','C','C','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','R','DDfgg','A');
