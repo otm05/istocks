@@ -399,7 +399,7 @@ margin-left: 40px;
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
-<form action="G_Collabo.php" method="POST" id="frm1" enctype="multipart/form-data" enctype="multipart/form-data">
+<form action="gestion_collabo.php" method="POST" id="frm1" enctype="multipart/form-data">
     <fieldset>
         <legend class="entr">Collaborateurs</legend><br><br><br>
         <div class="Global">
@@ -460,9 +460,8 @@ margin-left: 40px;
         </div>
         
         <br><br> 
-        <input type= 'text' name='photo' placeholder="entrer photo"><br><br> 
         <label class="lblinput">Fonction :</label>
-        <input type= 'text' name='Fonction' placeholder="Fonctionement"><br><br>
+        <input type= 'text' name='fonction' placeholder="Fonctionement"><br><br>
         <label class="lblinput">Grade :</label>
         <input type= 'text' name='grade' placeholder="entrer un grade"><br><br>
         <label class="lblinput">Echelle :</label>
