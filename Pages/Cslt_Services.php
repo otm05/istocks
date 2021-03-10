@@ -23,7 +23,7 @@ if(isset($_GET) && count($_GET)>0)
 ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="JQ/dist/jquery.validate.min.js"></script>
+<script src="../JQ/dist/jquery.validate.min.js"></script>
 
 <script>
        

@@ -24,93 +24,102 @@ $codeDCDFK2="";
 $dr_entr_combo=ExecuteReader($cnx,"select CodeEntr,NomEntr from Entreprises");
 $dr_Pole_combo=ExecuteReader($cnx,"select codePL,NomPL from Poles");
 
-if(isset($_GET) && count($_GET)>0)
+if(isset($_POST) && count($_POST)>0)
 {
-    if(isset($_GET['codeDep']))
+    if(isset($_POST['codeDep']))
     {
-        $codeDep=$_GET['codeDep'];
+        $codeDep=$_POST['codeDep'];
     }
-    if(isset($_GET['CodeEntrFK']))
+    if(isset($_POST['CodeEntrFK']))
     {
-        $CodeEntrFK=$_GET['CodeEntrFK'];
+        $CodeEntrFK=$_POST['CodeEntrFK'];
     }
-    if(isset($_GET['CodePLFK']))
+    if(isset($_POST['CodePLFK']))
     {
-        $CodePLFK=$_GET['CodePLFK'];
+        $CodePLFK=$_POST['CodePLFK'];
     }
-    if(isset($_GET['NomDep']))
+    if(isset($_POST['NomDep']))
     {
-        $NomDep=$_GET['NomDep'];
+        $NomDep=$_POST['NomDep'];
     }
-    if(isset($_GET['_description']))
+    if(isset($_POST['_description']))
     {
-        $_description=$_GET['_description'];
+        $_description=$_POST['_description'];
     }
-    if(isset($_GET['secteurPL']))
+    if(isset($_POST['secteurPL']))
     {
-        $secteurPL=$_GET['secteurPL'];
+        $secteurPL=$_POST['secteurPL'];
     }
-    if(isset($_GET['adresse']))
+    if(isset($_POST['adresse']))
     {
-        $adresse=$_GET['adresse'];
+        $adresse=$_POST['adresse'];
     }
-    if(isset($_GET['ville']))
+    if(isset($_POST['ville']))
     {
-        $ville=$_GET['ville'];
+        $ville=$_POST['ville'];
     }
-    if(isset($_GET['codePostal']))
+    if(isset($_POST['codePostal']))
     {
-        $codePostal=$_GET['codePostal'];
+        $codePostal=$_POST['codePostal'];
     }
-    if(isset($_GET['pays']))
+    if(isset($_POST['pays']))
     {
-        $pays=$_GET['pays'];
+        $pays=$_POST['pays'];
     }
-    if(isset($_GET['email']))
+    if(isset($_POST['email']))
     {
-        $email=$_GET['email'];
+        $email=$_POST['email'];
     }
-    if(isset($_GET['fix']))
+    if(isset($_POST['fix']))
     {
-        $fix=$_GET['fix'];
+        $fix=$_POST['fix'];
     }
-    if(isset($_GET['fax']))
+    if(isset($_POST['fax']))
     {
-        $fax=$_GET['fax'];
+        $fax=$_POST['fax'];
     }
-    if(isset($_GET['siteWeb']))
+    if(isset($_POST['siteWeb']))
     {
-        $siteWeb=$_GET['siteWeb'];
+        $siteWeb=$_POST['siteWeb'];
     }
-    if(isset($_GET['fullnameContact']))
+    if(isset($_POST['fullnameContact']))
     {
-        $fullnameContact=$_GET['fullnameContact'];
+        $fullnameContact=$_POST['fullnameContact'];
     }
-    if(isset($_GET['gsmcontact']))
+    if(isset($_POST['gsmcontact']))
     {
-        $gsmcontact=$_GET['gsmcontact'];
+        $gsmcontact=$_POST['gsmcontact'];
     }
-    if(isset($_GET['logoDep']))
-    {
-        $logoDep=$_GET['logoDep'];
-    }
+    //logo
     
-    if(isset($_GET['codeCDFK1']))
+    if(isset($_POST['codeCDFK1']))
     {
-        $codeCDFK1=$_GET['codeCDFK1'];
+        $codeCDFK1=$_POST['codeCDFK1'];
     }
-    if(isset($_GET['codeDCDFK2']))
+    if(isset($_POST['codeDCDFK2']))
     {
-        $codeDCDFK2=$_GET['codeDCDFK2'];
+        $codeDCDFK2=$_POST['codeDCDFK2'];
     }
     //pour ajouter
-    if($_GET['add']=="Enregistrer")
+    if($_POST['add']=="Enregistrer")
     {  
+        if($_SERVER["REQUEST_METHOD"]=="POST")
+        {
+            $f=$_FILES["btn1"];
+            $pathImg=$f["tmp_name"];
+            if(isset($f["tmp_name"]))
+            {
+                $NameFile="".$codeDep."_istoks.jpg";
+                $pathFile="../imgSource/$NameFile";
+                $logoDep=$pathFile;
+                move_uploaded_file($f["tmp_name"],"../imgSource/$NameFile");
+            }
+        }
         ExecuteNonQuery($cnx,"insert into Departements values('$codeDep','$CodeEntrFK','$CodePLFK','$NomDep','$_description','$secteurPL','$adresse','$ville','$codePostal','$pays','$email','$fix','$fax','$siteWeb','$fullnameContact','$gsmcontact','$logoDep','$codeCDFK1','$codeDCDFK2');");
         header("Location:Cslt_dep.php");  
     }
 
-    if($_GET['add']=="Annuler")
+    if($_POST['add']=="Annuler")
     {  
         header("Location:Cslt_dep.php");  
     }
@@ -146,6 +155,7 @@ $(function() {
                         ville : {required:true},
                         pays :{required:true},
                         adresse :{required:true},
+                        btn1 : {required:true},
                         gsmcontact : {
                             required:true,
                             number: true
@@ -173,6 +183,7 @@ $(function() {
                         CodeEntrFK: {required:'veuillez indiquer une entreprise *'},
                         CodePLFK : {required:'veuillez indiquer Quel Ploe *'},
                         NomDep : {required:'veuillez insérer Nom Departement *'},
+                        btn1 : {required:'veuillez insérer LOGO *'},
 
                         ville: {required:'veuillez insérer La ville *'},
                         pays: {required:'veuillez indiquer Pays *'},
@@ -243,10 +254,20 @@ cursor: pointer;
 #btnvider:hover{
 background-color:rgb(91, 173, 187);
 }
+
+.divLogo{
+margin-left: 40px;
+}
+.logoentr{
+    width: 100px;
+    height: 100px;
+    border: 3px solid coral;
+    border-radius: 10%;
+}
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
-<form action="gestion_departement.php" method="get" id="frm1">
+<form action="gestion_departement.php" method="POST" id="frm1" enctype="multipart/form-data">
     <fieldset>
         <legend class="entr">Departements</legend><br><br><br>
         <div class="Global">
@@ -301,8 +322,14 @@ background-color:rgb(91, 173, 187);
         <input type= 'text' name='fullnameContact' placeholder="entrer full name"><br><br>
         <label>GSM Contact :</label>
         <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
+        
         <label>Logo d'entreprises :</label>
-        <input type= 'text' name='logoDep' placeholder="entrer un logo "><br><br>
+        <div class="divLogo">
+        <input type="file" name="btn1" onchange="readLogo(this);">
+        <img class="logoentr" id="maPic"><br>
+        </div>
+        
+        <br><br>
         <label>Code codeCDFK1 :</label>
         <input type= 'text' name='codeCDFK1' placeholder="entrer un collabo "><br><br>
         <label>Code codeDCDFK2 :</label>
@@ -319,4 +346,15 @@ background-color:rgb(91, 173, 187);
         </fieldset>
         </form>
         </body>
+        <script>
+        function readLogo(x)
+                {
+                    let dr = new FileReader();
+                    dr.onload=function(e){
+                       let img = document.querySelector("#maPic");
+                       img.src=e.target.result; 
+                    }
+                    dr.readAsDataURL(x.files[0]);
+                }
+        </script>
         </html>

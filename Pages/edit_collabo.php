@@ -65,186 +65,197 @@ if(isset($_GET['matricule']))
         }
     }
 
-if(isset($_GET) && count($_GET)>0)
-{
-    if(isset($_GET['matricule']))
+    if(isset($_POST) && count($_POST)>0)
     {
-        $matricule=$_GET['matricule'];
-    }
-    if(isset($_GET['CodeEntrFK']))
-    {
-        $CodeEntrFK=$_GET['CodeEntrFK'];
-    }
-    if(isset($_GET['nom']))
-    {
-        $nom=$_GET['nom'];
-    }
-    if(isset($_GET['prenom']))
-    {
-        $prenom=$_GET['prenom'];
-    }
-    if(isset($_GET['nomArabe']))
-    {
-        $nomArabe=$_GET['nomArabe'];
-    }
-    if(isset($_GET['prenomArabe']))
-    {
-        $prenomArabe=$_GET['prenomArabe'];
-    }
-    if(isset($_GET['cin']))
-    {
-        if($_GET['cin']=='C')
+        if(isset($_POST['matricule']))
         {
-            $cin="C";
+            $matricule=$_POST['matricule'];
         }
-        if($_GET['cin']=='M')
+        if(isset($_POST['CodeEntrFK']))
         {
-            $cin="M";
+            $CodeEntrFK=$_POST['CodeEntrFK'];
         }
-        if($_GET['cin']=='D')
+        if(isset($_POST['nom']))
         {
-            $cin="D";
+            $nom=$_POST['nom'];
         }
-        if($_GET['cin']=='V')
+        if(isset($_POST['prenom']))
         {
-            $cin="V";
+            $prenom=$_POST['prenom'];
         }
-    }
-    if(isset($_GET['civilite']))
-    {
-        $civilite=$_GET['civilite'];
-    }
-    if(isset($_GET['nationalite']))
-    {
-        $nationalite=$_GET['nationalite'];
-    }
-    if(isset($_GET['email']))
-    {
-        $email=$_GET['email'];
-    }
-    if(isset($_GET['gsm']))
-    {
-        $gsm=$_GET['gsm'];
-    }
-    if(isset($_GET['adresse']))
-    {
-        $adresse=$_GET['adresse'];
-    }
-    if(isset($_GET['ville']))
-    {
-        $ville=$_GET['ville'];
-    }
-    if(isset($_GET['codePostal']))
-    {
-        $codePostal=$_GET['codePostal'];
-    }
-    if(isset($_GET['pays']))
-    {
-        $pays=$_GET['pays'];
-    }
-    if(isset($_GET['photo']))
-    {
-        $photo=$_GET['photo'];
-    }
-    if(isset($_GET['fonction']))
-    {
-        $fonction=$_GET['fonction'];
-    }
-    if(isset($_GET['grade']))
-    {
-        $grade=$_GET['grade'];
-    }
-    if(isset($_GET['echelle']))
-    {
-        $echelle=$_GET['echelle'];
-    }
-    if(isset($_GET['echellon']))
-    {
-        $echellon=$_GET['echellon'];
-    }
-    if(isset($_GET['_description']))
-    {
-        $_description=$_GET['_description'];
-    }
-    if(isset($_GET['codeSrvFK1']))
-    {
-        $codeSrvFK1=$_GET['codeSrvFK1'];
-    }
-    if(isset($_GET['codeEntrFK2']))
-    {
-        $codeEntrFK2=$_GET['codeEntrFK2'];
-    }
-    if(isset($_GET['typeContrat']))
-    {
-        //'R','F','V','C','A','CDI','CDD','E','S'
-        if($_GET['typeContrat']=='R')
+        if(isset($_POST['nomArabe']))
         {
-            $typeContrat="R";
+            $nomArabe=$_POST['nomArabe'];
         }
-        if($_GET['typeContrat']=='F')
+        if(isset($_POST['prenomArabe']))
         {
-            $typeContrat="F";
+            $prenomArabe=$_POST['prenomArabe'];
         }
-        if($_GET['typeContrat']=='V')
+        if(isset($_POST['cin']))
         {
-            $typeContrat="V";
+            if($_POST['cin']=='C')
+            {
+                $cin="C";
+            }
+            if($_POST['cin']=='M')
+            {
+                $cin="M";
+            }
+            if($_POST['cin']=='D')
+            {
+                $cin="D";
+            }
+            if($_POST['cin']=='V')
+            {
+                $cin="V";
+            }
         }
-        if($_GET['typeContrat']=='C')
+        if(isset($_POST['civilite']))
         {
-            $typeContrat="C";
+            $civilite=$_POST['civilite'];
         }
-        if($_GET['typeContrat']=='A')
+        if(isset($_POST['nationalite']))
         {
-            $typeContrat="A";
+            $nationalite=$_POST['nationalite'];
         }
-        if($_GET['typeContrat']=='CDI')
+        if(isset($_POST['email']))
         {
-            $typeContrat="CDI";
+            $email=$_POST['email'];
         }
-        if($_GET['typeContrat']=='CDD')
+        if(isset($_POST['gsm']))
         {
-            $typeContrat="CDD";
+            $gsm=$_POST['gsm'];
         }
-        if($_GET['typeContrat']=='E')
+        if(isset($_POST['adresse']))
         {
-            $typeContrat="E";
+            $adresse=$_POST['adresse'];
         }
-        if($_GET['typeContrat']=='S')
+        if(isset($_POST['ville']))
         {
-            $typeContrat="S";
+            $ville=$_POST['ville'];
         }
-    }
-    if(isset($_GET['numContrat']))
-    {
-        $numContrat=$_GET['numContrat'];
-    }
-
-    if(isset($_GET['etatColabo']))
-    {
-        if($_GET['etatColabo']=='A')
+        if(isset($_POST['codePostal']))
         {
-            $etatColabo="A";
+            $codePostal=$_POST['codePostal'];
         }
-        if($_GET['etatColabo']=='D')
+        if(isset($_POST['pays']))
         {
-            $etatColabo="D";
+            $pays=$_POST['pays'];
         }
-        if($_GET['etatColabo']=='R')
+        if(isset($_POST['photo']))
         {
-            $etatColabo="R";
+            $photo=$_POST['photo'];
         }
-
-    }
-    if(!empty($_GET['add'])){
-        if($_GET['add']=="Enregistrer")
+        if(isset($_POST['fonction']))
+        {
+            $fonction=$_POST['fonction'];
+        }
+        if(isset($_POST['grade']))
+        {
+            $grade=$_POST['grade'];
+        }
+        if(isset($_POST['echelle']))
+        {
+            $echelle=$_POST['echelle'];
+        }
+        if(isset($_POST['echellon']))
+        {
+            $echellon=$_POST['echellon'];
+        }
+        if(isset($_POST['_description']))
+        {
+            $_description=$_POST['_description'];
+        }
+        if(isset($_POST['codeSrvFK1']))
+        {
+            $codeSrvFK1=$_POST['codeSrvFK1'];
+        }
+        if(isset($_POST['codeEntrFK2']))
+        {
+            $codeEntrFK2=$_POST['codeEntrFK2'];
+        }
+        if(isset($_POST['typeContrat']))
+        {
+            //'R','F','V','C','A','CDI','CDD','E','S'
+            if($_POST['typeContrat']=='R')
+            {
+                $typeContrat="R";
+            }
+            if($_POST['typeContrat']=='F')
+            {
+                $typeContrat="F";
+            }
+            if($_POST['typeContrat']=='V')
+            {
+                $typeContrat="V";
+            }
+            if($_POST['typeContrat']=='C')
+            {
+                $typeContrat="C";
+            }
+            if($_POST['typeContrat']=='A')
+            {
+                $typeContrat="A";
+            }
+            if($_POST['typeContrat']=='CDI')
+            {
+                $typeContrat="CDI";
+            }
+            if($_POST['typeContrat']=='CDD')
+            {
+                $typeContrat="CDD";
+            }
+            if($_POST['typeContrat']=='E')
+            {
+                $typeContrat="E";
+            }
+            if($_POST['typeContrat']=='S')
+            {
+                $typeContrat="S";
+            }
+        }
+        if(isset($_POST['numContrat']))
+        {
+            $numContrat=$_POST['numContrat'];
+        }
+    
+        if(isset($_POST['etatColabo']))
+        {
+            if($_POST['etatColabo']=='A')
+            {
+                $etatColabo="A";
+            }
+            if($_POST['etatColabo']=='D')
+            {
+                $etatColabo="D";
+            }
+            if($_POST['etatColabo']=='R')
+            {
+                $etatColabo="R";
+            }
+    
+        }
+    if(!empty($_POST['add'])){
+        if($_POST['add']=="Enregistrer")
         {  
-
-            $req1="update Collaborateurs set CodeEntrFK='$CodeEntrFK',nom='$nom',prenom='$prenom',nomArabe='$nomArabe',prenomArabe='$prenomArabe',cin='$cin',civilite='$civilite',nationalite='$nationalite',email='$email',adresse='$adresse',ville='$ville',codePostal='$codePostal',pays='$pays',photo='$photo',fonction='$fonction',grade='$grade',echelle=$echelle,echellon=$echellon,_description='$_description',codeSrvFK1='$codeSrvFK1',codeEntrFK2='$codeEntrFK2',typeContrat='$typeContrat',numContrat='$numContrat',etatColabo='$etatColabo' where matricule='$matricule';";
+            if($_SERVER["REQUEST_METHOD"]=="POST")
+                {
+                    $f=$_FILES["photo"];
+                    $pathImg=$f["tmp_name"];
+                    if(isset($f["tmp_name"]))
+                    {
+                        $NameFile="".$matricule."_istoks.jpg";
+                        $pathFile="../imgSource/$NameFile";
+                        $photo=$pathFile;
+                        move_uploaded_file($f["tmp_name"],"../imgSource/$NameFile");
+                    }
+                }
+            $req1="update Collaborateurs set CodeEntrFK='$CodeEntrFK',nom='$nom',prenom='$prenom',nomArabe='$nomArabe',prenomArabe='$prenomArabe',cin='$cin',civilite='$civilite',nationalite='$nationalite',email='$email',adresse='$adresse',ville='$ville',codePostal='$codePostal',pays='$pays',photo='$photo',fonction='$fonction',grade='$grade',echelle=$echelle,echellon=$echellon,_description='$_description',codeSrvFK1='$codeSrvFK1',codeEntrFK2='$codeEntrFK2',typeContrat='$typeContrat',numContrat='$numContrat',etatColabo='$etatColabo',gsm=$gsm where matricule='$matricule';";
             ExecuteNonQuery($cnx,$req1);
             header("Location:Cslt_Collabo.php");  
         }
 
-        if($_GET['add']=="Annuler")
+        if($_POST['add']=="Annuler")
         {  
             header("Location:Cslt_Collabo.php");  
         }
@@ -294,7 +305,7 @@ $(function(){
                         ville : {required:true},
                         codePostal :{required:true,number:true},
                         pays :{required:true},
-                        photo: {required:true},
+                        
                         fonction: {required:true},
                         grade : {required:true},
                         echelle : {required:true,number:true},
@@ -322,7 +333,7 @@ $(function(){
                         ville : {required:'veuillez insérer ville *'},
                         codePostal :{required:'veuillez insérer codePostal *',number:'tappez des chiffre svp *'},
                         pays :{required:'veuillez insérer pays *'},
-                        photo: {required:'veuillez insérer photo *'},
+                        
                         fonction: {required:'veuillez insérer fonction *'},
                         grade : {required:'veuillez insérer grade *'},
                         echelle : {required:'veuillez insérer echelle *',number:'tappez des chiffre svp *'},
@@ -410,10 +421,20 @@ font-size: 14px;
 width: 95%;
 clear: both;
 }
+
+.divLogo{
+margin-left: 40px;
+}
+.logoentr{
+    width: 100px;
+    height: 100px;
+    border: 3px solid coral;
+    border-radius: 10%;
+}
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
-<form action="edit_collabo.php" method="get" id="frm1">
+<form action="edit_collabo.php" method="POST" id="frm1" enctype="multipart/form-data">
     <fieldset>
         <legend class="entr">Collaborateurs</legend><br><br><br>
         <div class="Global">
@@ -467,7 +488,13 @@ clear: both;
         <label class="lblinput">Pays :</label>
         <input type= 'text' name='pays' placeholder="entrer Pays " value="<?php echo($pays); ?>"><br><br>
         <label class="lblinput">Photo :</label>
-        <input type= 'text' name='photo' placeholder="entrer photo" value="<?php echo($photo); ?>"><br><br> 
+        
+        <div class="divLogo">
+        <input type="file" name="photo" onchange="readLogo(this);">
+        <img class="logoentr" id="maPic" src="<?php echo($photo); ?>" title="<?php echo($photo); ?>"><br>
+        </div>
+
+        <br><br> 
         <label class="lblinput">Fonction :</label>
         <input type= 'text' name='fonction' placeholder="Fonctionement" value="<?php echo($fonction); ?>"><br><br>
         <label class="lblinput">Grade :</label>
@@ -514,11 +541,20 @@ clear: both;
         <br>
         </fieldset>
         </form>
-        </body>
-        <script>
-            document.getElementById("sel").value="<?php echo($CodeEntrFK); ?>";
-            document.getElementById("<?php echo($typeContrat."-typeContrat"); ?>").checked=true;
-            document.getElementById("<?php echo($cin."-cin"); ?>").checked=true;
-            document.getElementById("<?php echo($etatColabo."-etatColabo"); ?>").checked=true;
-        </script>
-        </html>
+</body>
+<script>
+document.getElementById("sel").value="<?php echo($CodeEntrFK); ?>";
+document.getElementById("<?php echo($typeContrat."-typeContrat"); ?>").checked=true;
+document.getElementById("<?php echo($cin."-cin"); ?>").checked=true;
+document.getElementById("<?php echo($etatColabo."-etatColabo"); ?>").checked=true;
+function readLogo(x)
+                {
+                    let dr = new FileReader();
+                    dr.onload=function(e){
+                       let img = document.querySelector("#maPic");
+                       img.src=e.target.result; 
+                    }
+                    dr.readAsDataURL(x.files[0]);
+                }
+</script>
+</html>

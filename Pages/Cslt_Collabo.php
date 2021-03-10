@@ -222,6 +222,14 @@ background-color: rgb(231, 203, 126);
     text-align: center;
 }
 /*Fin style mytable*/
+/* phpto td*/
+.imgLogo{
+    width: 80px;
+    height: 80px;
+    border:3px solid rgb(91, 173, 187);
+    border-radius: 30%;
+    box-shadow: .50em .50em 1em;
+}
 </style>
 <br><br><br><br>
 <div class="main">
@@ -250,7 +258,7 @@ background-color: rgb(231, 203, 126);
             <td><?php echo($xtr['CodeEntrFK']); ?></td
             ><td><?php echo($xtr['nom']); ?></td>
             <td><?php echo($xtr['nomArabe']); ?></td>
-            <td><?php echo($xtr['photo']); ?></td>
+            <td><img class="imgLogo" src="<?php echo($xtr['photo']); ?>" title="<?php echo($xtr['photo']); ?>"></td>
             <td><?php echo($xtr['cin']); ?></td>
             <td><?php echo($xtr['nationalite']); ?></td>
             <td><?php echo($xtr['numContrat']); ?></td>

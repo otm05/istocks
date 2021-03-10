@@ -198,7 +198,7 @@ color: black;
 display: inline;
 text-align: center;
 border-radius: 4px;
-border: 1px solid rgb(91, 173, 187);
+border: 2px solid rgb(91, 173, 187);
 outline: none;
 cursor: pointer;
 padding: 2px 1px;
@@ -218,6 +218,14 @@ background-color: rgb(231, 203, 126);
     text-align: center;
 }
 /*Fin style mytable*/
+/* Logo td*/
+.imgLogo{
+    width: 80px;
+    height: 80px;
+    border:3px solid rgb(91, 173, 187);
+    border-radius: 30%;
+    box-shadow: .50em .50em 1em;
+}
 </style>
 <br><br><br><br>
 <div class="main">
@@ -281,7 +289,7 @@ background-color: rgb(231, 203, 126);
                 <td><?php echo($xtr['siteWeb']); ?></td>-->
                 <td><?php echo($xtr['fullNameContact']); ?></td>
                 <td><?php echo($xtr['gsmContact']); ?></td>
-                <td><?php echo($xtr['logoDep']); ?></td>
+                <td><img class="imgLogo" src="<?php echo($xtr['logoDep']); ?>" title="<?php echo($xtr['logoDep']); ?>"></td>
                 <td><?php echo($xtr['codeCDFK1']); ?></td>
             <!--<td><?php echo($xtr['codeDCDFK2']); ?></td>-->
                 
