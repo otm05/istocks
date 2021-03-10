@@ -46,11 +46,14 @@ outline: none;
 cursor: pointer;
 }
 input[placeholder] {
-    text-align: center;
+text-align: center;
 }
 input[type=submit]:hover{
 background-color:rgb(91, 173, 187);
 }
+
+
+
 input[type=text]{
 line-height :30px; 
 border-radius: 6px;
