@@ -29,6 +29,10 @@
             <li><a href="../Pages/Cslt_dep.php">departements</a></li>
             <li><a href="../Pages/Cslt_Services.php">services</a></li>
             <li><a href="../Pages/Cslt_Collabo.php">collaborateurs</a></li>
+            <li><a href="../pages/GestionFournisseurs.php">Fournisseurs</a></li>
+            <li><a href="../pages/GestionUnites.php">Unites</a></li>
+            <li><a href="../pages/GestionCategories.php">Categories</a></li>
+            <li><a href="../pages/GestionCasiers.php">Casiers</a></li>
             <li><a href="../pages/GestionFamilleConsultation.php">Familles</a></li>
             <li><a href="../pages/GestionMarquesConsultation.php">Marques</a></li>
             <li><a href="../pages/GestionMagasinsConsultation.php">Magasin</a></li>
