@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <link rel = "icon" href="../img/logo_title1.png" type ="image/x-icon">
-    <link rel="stylesheet" href="../css/style_Gestion.css">
+    
     <link rel="stylesheet" href="../css/style1.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -25,12 +25,14 @@
         </div>
         <ul class="nav-links">
             <li><a href="../index.php">Home</a></li>
-            <!--<li><a href="../Pages/gestion_poles.php">poles</a></li>-->
+
             <li><a href="../Pages/Cslt_dep.php">departements</a></li>
             <li><a href="../Pages/Cslt_Services.php">services</a></li>
             <li><a href="../Pages/Cslt_Collabo.php">collaborateurs</a></li>
-            <!--<li><a href="../Pages/gestion_entreprise.php">entreprise</a></li>-->
-            <li><a href="../Pages/contactus.php">Contact us</a></li>
+            <li><a href="../pages/GestionFamilleConsultation.php">Familles</a></li>
+            <li><a href="../pages/GestionMarquesConsultation.php">Marques</a></li>
+            <li><a href="../pages/GestionMagasinsConsultation.php">Magasin</a></li>
+            <li><a href="../pages/GestionRangConsultation.php">rang</a></li>
         </ul>
         <div class="menu_barre">
             <div class="line1"></div>

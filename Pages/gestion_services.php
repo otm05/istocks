@@ -1,4 +1,5 @@
 <!-- on va appeler le header -->
+<link rel="stylesheet" href="../css/style_Gestion.css">
 <?php
 
 require_once("../MyLibrery/connection.php");

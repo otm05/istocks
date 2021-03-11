@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="../css/style_Gestion.css">
 <?php
 include("../MyLibrery/head_istocks.php");
 ?>
