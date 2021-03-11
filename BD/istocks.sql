@@ -179,3 +179,49 @@ alter table Collaborateurs add foreign key (codeEntrFK2) references Services(Cod
 insert into Collaborateurs values('C1','shop','xxxxx12','r','Dd','FD','C','C','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','R','DDfgg','A');
 insert into Collaborateurs values('C2','shop','xxxxx12','r','Dd','FD','C','C','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','R','DDfgg','A');
 insert into Collaborateurs values('C3','shop','xxxxx12','r','Dd','FD','C','C','DD','DD','DD','DD','DD','DD','DD','DD','ssd','dfd',12,23,'fffgfgfgf','S1','E1','R','DDfgg','A');
+
+--G2
+
+create table Marques(
+    codeMrq varchar(20),
+    codeEntrFk varchar(20) null,
+    nomMrq varchar(80),
+    categorieMrq varchar(3),
+    _description varchar(255),
+    paysOrigine varchar(80),
+    logoFour varchar(50),
+    constraint pk primary key(codeMrq,codeEntrFk)
+);
+alter table Marques add foreign key (codeEntrFk) references Entreprises(codeEntr) on delete cascade;
+alter table Marques add constraint categorieMrq check (categorieMrq in('L','LC','N','C'));
+
+create table Familles (
+    codeFml varchar(20),
+    codeEntrFk varchar(20) null,
+    nomFml varchar(80),
+    description varchar(255),
+    constraint pk primary key(codeFml,codeEntrFk)
+);
+alter table Familles add foreign key (codeEntrFk) references Entreprises(codeEntr) on delete cascade;
+
+create table Magasins(
+    codeMag varchar(20),
+    codeEntrFk varchar(20) null,
+    nomMag varchar(20),
+    adresse varchar(80),
+    ville varchar(255),
+    pays varchar(80),
+    description varchar(255),
+    constraint pk primary key(codeMag,codeEntrFk)
+);
+alter table Magasins add foreign key (codeEntrFk) references Entreprises(codeEntr) on delete cascade;
+create table Rangs(
+    codeRang varchar(20),
+    codeMagFk varchar(20) null,
+    codeEntrFk varchar(20) null,
+    description varchar(255),
+     constraint pk primary key(codeRang,codeEntrFk)
+);
+alter table Rangs add foreign key (codeEntrFk) references Entreprises(codeEntr) on delete cascade;
+alter table Rangs add foreign key (codeMagFk) references Magasins(codeMag) on delete cascade;
+
