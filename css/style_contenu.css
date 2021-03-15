@@ -1,0 +1,170 @@
+.nav-links a:hover{
+background-color: rgb(91, 173, 187);
+color: rgb(32, 31, 31);
+}
+.error{
+color: red;
+font-size: 14px;
+}
+#sel{
+height:34px ;
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+width: 95%;
+clear: both;
+}
+#sel2{
+height:34px ;
+line-height :30px; 
+border-radius: 6px;
+font-size: 14px;
+width: 95%;
+clear: both;
+}
+
+/*Style of my table*/
+#mytable {
+font-family: Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+text-align: left;
+}
+
+#mytable td, #customers th {
+border-bottom: 1px solid #ddd;
+padding: 9px;
+}
+
+#mytable tr:nth-child(even){
+background-color: #f2f2f2;
+}
+
+#mytable tr:hover {
+background-color: #ddd;
+}
+
+#mytable th {
+height: 40px;
+font-weight: bold;
+padding-top: 12px;
+padding-bottom: 12px;
+background-color: #e6e6e6;
+color: rgb(39, 39, 39);
+}
+
+
+
+/* page interne*/
+.main{
+padding: 5px;
+margin: 5px;
+}
+/* Input */
+input[placeholder]{
+color: #ddd;
+}
+input[type=submit]{
+text-align: center;
+border-radius: 2px;
+border: 2px solid;
+outline: none;
+cursor: pointer;
+padding: 10px 0px;
+margin: 0;
+width: 25%;
+background-color: #3BB979;
+color: white;
+}
+
+input[type=submit]:hover{
+background-color: whitesmoke;
+color: #3BB979;
+}
+
+input[type=text] {
+text-align: center;
+height: 45px;
+width: 45%;
+padding: 10px 0px;
+margin: 0;
+box-sizing: border-box;
+border: none;
+background-color: #e6e6e6;
+color: rgb(0, 35, 68);
+}
+
+/* Div1 */
+
+.filter a{
+margin-top: 12px;
+text-decoration: none;
+color: 111111;
+}
+.filter a:hover{
+color: #2DA4E1;
+}
+.main_filter{
+color: white;
+border-radius: 8px;
+border: 2px solid #41B87C;
+}
+.title_filter{
+padding: 4px;
+border: 2px solid #41B87C;
+background: #41B87C;
+border-radius: 4px;
+}
+.filter{
+padding: 8px;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+}
+/*div 2*/
+.main_liste{
+border-radius: 8px;
+border: 2px solid #3AA9E1;
+}
+
+.title_liste{
+padding: 4px;
+color: white;
+border: 2px solid #3AA9E1;
+background: #3AA9E1;
+border-radius: 4px;
+}
+.liste{
+padding: 8px;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+}
+
+.td_button_delete , .td_button_update{
+text-decoration: none;
+color: black;
+display: inline;
+text-align: center;
+border-radius: 4px;
+border: 1px solid rgb(91, 173, 187);
+outline: none;
+cursor: pointer;
+padding: 2px 1px;
+margin: 0;
+width: 90px;
+}
+
+.action{
+text-align: center;
+}
+.td_button_delete:hover{
+background-color: rgb(230, 127, 127);
+}
+.td_button_update:hover{
+background-color: rgb(231, 203, 126);
+}
+.th_action {
+text-align: center;
+}
+/*Fin style mytable*/
