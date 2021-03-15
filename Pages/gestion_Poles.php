@@ -1,11 +1,11 @@
 <!-- on va appeler le header -->
+<link rel="stylesheet" href="../css/style_Gestion.css">
 <?php
-include_once("../MyLibrery/connection.php");
-$codePL="";
-$codeEntrFK="";
-$NomPL="";
+require_once("../MyLibrery/connection.php");
+$CodeEntr="";
+$nomentr="";
 $_description="";
-$secteurPL="";
+$SecteurEntre="";
 $adresse="";
 $ville="";
 $codePostal="";
@@ -14,32 +14,29 @@ $email="";
 $fixe="";
 $fax="";
 $siteWeb="";
-$fullNameContact="";
-$gsmContact="";
-$logoPL="";
-$codeDPLFK1="";
-$codeDPLFK2="";
-if(isset($_GET) && count($_GET)>0)
+$fullnameContact="";
+$gsmcontact="";
+$logoEntre="";
+$codeDGFK1="";
+$codeDGFK2="";
+$EtatEntre="";
+if(isset($_GET))
 {
-    if(isset($_GET['codePL']))
+    if(isset($_GET['CodeEntr']))
     {
-        $codePL=$_GET['codePL'];
+        $CodeEntr=$_GET['CodeEntr'];
     }
-    if(isset($_GET['codeEntrFK']))
+    if(isset($_GET['nomentr']))
     {
-        $codeEntrFK=$_GET['codeEntrFK'];
-    }
-    if(isset($_GET['NomPL']))
-    {
-        $NomPL=$_GET['NomPL'];
+        $nomentr=$_GET['nomentr'];
     }
     if(isset($_GET['_description']))
     {
         $_description=$_GET['_description'];
     }
-    if(isset($_GET['secteurPL']))
+    if(isset($_GET['SecteurEntre']))
     {
-        $secteurPL=$_GET['secteurPL'];
+        $SecteurEntre=$_GET['SecteurEntre'];
     }
     if(isset($_GET['adresse']))
     {
@@ -73,45 +70,31 @@ if(isset($_GET) && count($_GET)>0)
     {
         $siteWeb=$_GET['siteWeb'];
     }
-    if(isset($_GET['fullNameContact']))
+    if(isset($_GET['fullnameContact']))
     {
-        $fullNameContact=$_GET['fullNameContact'];
+        $fullnameContact=$_GET['fullnameContact'];
     }
-    if(isset($_GET['gsmContact']))
+    if(isset($_GET['gsmcontact']))
     {
-        $gsmContact=$_GET['gsmContact'];
+        $gsmcontact=$_GET['gsmcontact'];
     }
-    if(isset($_GET['logoPL']))
+    if(isset($_GET['logoEntre']))
     {
-        $logoPL=$_GET['logoPL'];
+        $logoEntre=$_GET['logoEntre'];
     }
-    if(isset($_GET['codeDPLFK1']))
+    if(isset($_GET['codeDGFK1']))
     {
-        $codeDPLFK1=$_GET['codeDPLFK1'];
+        $codeDGFK1=$_GET['codeDGFK1'];
     }
-    if(isset($_GET['codeDPLFK2']))
+    if(isset($_GET['codeDGFK2']))
     {
-        $codeDPLFK2=$_GET['codeDPLFK2'];
+        $codeDGFK2=$_GET['codeDGFK2'];
     }
-   
-    //pour ajouter
-    if($_GET['add']=="Enregistrer")
-    {  
-        $req1="insert into Poles values('$codePL','$codeEntrFK','$NomPL','$_description','$secteurPL','$adresse','$ville','$codePostal','$pays','$email','$fixe','$fax','$siteWeb','$fullNameContact','$gsmContact','$logoPL','$codeDPLFK1','$codeDPLFK2');";
-        ExecuteNonQuery($cnx,$req1);
-        header("Location:Cslt_Poles.php");  
-    }
-
-    if($_GET['add']=="Annuler")
-    {  
-        header("Location:Cslt_Poles.php");  
+    if(isset($_GET['CodeEntr']))
+    {
+        $CodeEntr=$_GET['CodeEntr'];
     }
 }
-
-    
-    
-
-
 ?>
 <meta charset="UTF-8">
 <link rel = "icon" href="../img/logo_title1.png" type ="image/x-icon">
@@ -127,26 +110,8 @@ if(isset($_GET) && count($_GET)>0)
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="../JQ/dist/jquery.validate.min.js"></script>
-<br><br><br><br><br>
-<style>
-.nav-links a:hover{
-    background-color: #937CB1 ;
-    color: rgb(32, 31, 31);
-}
-input[type=submit]:hover{
-background-color:#937CB1;
-}
-label{
-color: #75628E;
-}
-body{
-background-color: #E3CEFF;
-}
-.entr{
-background-color: #937CB1;
-}
-
-</style>
+<br><br><br>
+<link rel="stylesheet" href="../css/style_G.css">
 <!-- commencer le Nv code HTML -->
 <br>
 <form action="gestion_Poles.php" method="get" id="frm1">
@@ -159,7 +124,7 @@ background-color: #937CB1;
         <label>Code pole :</label>
         <input type='text' name='codePL' placeholder="entrer code pole"><br><br>
         <label>Code Entreprise :</label>
-        <input type='text' name ='codeEntrFK' placeholder="entrer l'entreprise"><br><br>
+        <input type='text' name ='CodeEntrFK' placeholder="entrer l'entreprise"><br><br>
         <label>Nom pole : :</label>
         <input type='text' name='NomPL' placeholder="entrer nom pole"><br><br>
         <label>Description :</label>
@@ -202,17 +167,12 @@ background-color: #937CB1;
 
         </div><br>
         <div class="div_butt">
-        <input id="btnAdd" type="submit" name="add" value="Enregistrer">
-        <input id="btnVider" type="submit" name="add" value="Vider"onclick="resetForm()">
-        <input id="btnAnnuler" type="submit" name="add" value="Annuler">
+        <input type="submit" name="add" value="Ajouter">
+        <input type="submit" name="add" value="Supprimer">
+        <input type="submit" name="add" value="Modifier">
         </div>
         <br>
         </fieldset>
         </form>
         </body>
-        <script>
-            function resetForm() {
-                document.getElementById("frm1").reset();
-                }
-        </script>
         </html>

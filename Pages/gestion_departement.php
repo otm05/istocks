@@ -203,59 +203,8 @@ $(function() {
 
 </script>
 <br><br>
+<link rel="stylesheet" href="../css/style_G.css">
 <style>
-.error{
-    color: blue;
-    font-size: 14px;
-}
-.nav-links a:hover{
-    background-color: #D03939 ;
-    color: rgb(32, 31, 31);
-}
-#sel{
-height:34px ;
-line-height :30px; 
-border-radius: 6px;
-font-size: 14px;
-width: 95%;
-clear: both;
-}
-#sel2{
-height:34px ;
-line-height :30px; 
-border-radius: 6px;
-font-size: 14px;
-width: 95%;
-clear: both;
-}
-
-input[type=submit]:hover{
-background-color:#D03939;
-}
-label{
-color: #9E2D2D;
-}
-body{
-background-color: #FCADAD;
-}
-.entr{
-background-color: #D03939;
-}
-#btnvider{
-display: block;
-margin: 20px 0px 0px 20px ;
-text-align: center;
-border-radius: 10px;
-border: 2px solid;
-padding: 14px 110px ;
-outline: none;
-cursor: pointer;
-}
-
-#btnvider:hover{
-background-color:rgb(91, 173, 187);
-}
-
 .divLogo{
 margin-left: 40px;
 }

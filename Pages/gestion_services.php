@@ -1,5 +1,4 @@
 <!-- on va appeler le header -->
-<link rel="stylesheet" href="../css/style_Gestion.css">
 <?php
 
 require_once("../MyLibrery/connection.php");
@@ -73,7 +72,6 @@ if(isset($_GET) && count($_GET)>0)
 <meta charset="UTF-8">
 <link rel = "icon" href="../img/logo_title1.png" type ="image/x-icon">
 <link rel="stylesheet" href="../css/style_Gestion.css">
-<link rel="stylesheet" href="../css/style1.css">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
@@ -166,80 +164,9 @@ $(function() {
 });
 
 </script>
-<br><br>
+<br><br><br>
 <link rel = "icon" href="img/logo_title1.png" type ="image/x-icon">
-<style>
-.nav-links a:hover{
-background-color: rgb(91, 173, 187);
-color: rgb(32, 31, 31);
-}
-.error{
-color: red;
-font-size: 14px;
-}
-#sel{
-height:34px ;
-line-height :30px; 
-border-radius: 6px;
-font-size: 14px;
-width: 95%;
-clear: both;
-}
-#sel2{
-height:34px ;
-line-height :30px; 
-border-radius: 6px;
-font-size: 14px;
-width: 95%;
-clear: both;
-}
-
-/*Style of my table*/
-#mytable {
-margin-left: 5px;
-margin-right: 5px;
-font-family: Arial, Helvetica, sans-serif;
-border-collapse: collapse;
-width: 100%;
-text-align: left;
-}
-
-#mytable td, #customers th {
-border: 1px solid #ddd;
-padding: 9px;
-}
-
-#mytable tr:nth-child(even){
-background-color: #f2f2f2;
-}
-
-#mytable tr:hover {
-background-color: #ddd;
-}
-
-#mytable th {
-height: 60px;
-padding-top: 12px;
-padding-bottom: 12px;
-background-color: rgb(91, 173, 187);
-color: white;
-}
-/*Fin style mytable*/
-#btnvider{
-display: block;
-margin: 20px 0px 0px 20px ;
-text-align: center;
-border-radius: 10px;
-border: 2px solid;
-padding: 14px 110px ;
-outline: none;
-cursor: pointer;
-}
-
-#btnvider:hover{
-background-color:rgb(91, 173, 187);
-}
-</style>
+<link rel="stylesheet" href="../css/style_G.css">
 <!-- commencer le Nv code HTML -->
 <br>
 <form action="gestion_services.php" method="get" id="frm1">

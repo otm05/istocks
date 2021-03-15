@@ -315,35 +315,13 @@ $(function(){
 
 });
 </script>
-
-<br><br>
+<link rel="stylesheet" href="../css/style_G.css">
+<br><br><br>
 <style>
-.error{
-    color: brown;
-    font-size: 14px;
-}
-.nav-links a:hover{
-    background-color: #46A75C ;
-    color: rgb(32, 31, 31);
-}
-input[type=submit]:hover{
-background-color:#46A75C;
-}
-
-.lblinput{
-color: #46A75C;
-}
-
-body{
-background-color: #C8FFD4;
-}
-.entr{
-background-color: #46A75C;
-}
 .div_radio2{
 margin-left: 60px;
 font-size: 18px;
-color: #8FBC8F;
+color: rgb(69, 136, 148);
 user-select: none;
 font-size: 19px;
 font-weight: 800;
@@ -351,7 +329,7 @@ font-weight: 800;
 .div_radio1{
 margin-left: 60px;
 font-size: 18px;
-color: #8FBC8F;
+color: rgb(69, 136, 148);
 user-select: none;
 font-size: 19px;
 font-weight: 800;
@@ -363,29 +341,6 @@ margin: 5px;
 .rad1{
 size: 19px;
 margin: 5px;
-}
-#btnvider{
-display: block;
-margin: 20px 0px 0px 20px ;
-text-align: center;
-border-radius: 10px;
-border: 2px solid;
-padding: 14px 110px ;
-outline: none;
-cursor: pointer;
-}
-
-#btnvider:hover{
-background-color:rgb(91, 173, 187);
-}
-
-#sel{
-height:34px ;
-line-height :30px; 
-border-radius: 6px;
-font-size: 14px;
-width: 95%;
-clear: both;
 }
 
 .divLogo{
