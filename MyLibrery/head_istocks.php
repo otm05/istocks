@@ -25,7 +25,8 @@
         </div>
         <ul class="nav-links">
             <li><a href="../index.php">Home</a></li>
-
+            <li><a href="../Pages/Cslt_Poles.php">Poles</a></li>
+            <li><a href="../Pages/Cslt_Entreprises.php">Entreprises</a></li>
             <li><a href="../Pages/Cslt_dep.php">departements</a></li>
             <li><a href="../Pages/Cslt_Services.php">services</a></li>
             <li><a href="../Pages/Cslt_Collabo.php">collaborateurs</a></li>

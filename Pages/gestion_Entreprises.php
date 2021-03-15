@@ -1,42 +1,43 @@
 <!-- on va appeler le header -->
-<link rel="stylesheet" href="../css/style_Gestion.css">
 <?php
-require_once("../MyLibrery/connection.php");
+
+include_once("../MyLibrery/connection.php");
 $CodeEntr="";
-$nomentr="";
+$NomEntr="";
 $_description="";
-$SecteurEntre="";
+$secteurEntr="";
 $adresse="";
 $ville="";
 $codePostal="";
 $pays="";
 $email="";
-$fixe="";
+$fix="";
 $fax="";
 $siteWeb="";
-$fullnameContact="";
-$gsmcontact="";
-$logoEntre="";
+$fullNameContact="";
+$gsmContact="";
+$logoEntr="";
 $codeDGFK1="";
 $codeDGFK2="";
-$EtatEntre="";
-if(isset($_GET))
+$EtatEntr="";
+
+if(isset($_GET) && count($_GET)>0)
 {
     if(isset($_GET['CodeEntr']))
     {
         $CodeEntr=$_GET['CodeEntr'];
     }
-    if(isset($_GET['nomentr']))
+    if(isset($_GET['NomEntr']))
     {
-        $nomentr=$_GET['nomentr'];
+        $NomEntr=$_GET['NomEntr'];
     }
     if(isset($_GET['_description']))
     {
         $_description=$_GET['_description'];
     }
-    if(isset($_GET['SecteurEntre']))
+    if(isset($_GET['secteurEntr']))
     {
-        $SecteurEntre=$_GET['SecteurEntre'];
+        $secteurEntr=$_GET['secteurEntr'];
     }
     if(isset($_GET['adresse']))
     {
@@ -58,9 +59,9 @@ if(isset($_GET))
     {
         $email=$_GET['email'];
     }
-    if(isset($_GET['fixe']))
+    if(isset($_GET['fix']))
     {
-        $fixe=$_GET['fixe'];
+        $fix=$_GET['fix'];
     }
     if(isset($_GET['fax']))
     {
@@ -70,17 +71,17 @@ if(isset($_GET))
     {
         $siteWeb=$_GET['siteWeb'];
     }
-    if(isset($_GET['fullnameContact']))
+    if(isset($_GET['fullNameContact']))
     {
-        $fullnameContact=$_GET['fullnameContact'];
+        $fullNameContact=$_GET['fullNameContact'];
     }
-    if(isset($_GET['gsmcontact']))
+    if(isset($_GET['gsmContact']))
     {
-        $gsmcontact=$_GET['gsmcontact'];
+        $gsmContact=$_GET['gsmContact'];
     }
-    if(isset($_GET['logoEntre']))
+    if(isset($_GET['logoEntr']))
     {
-        $logoEntre=$_GET['logoEntre'];
+        $logoEntre=$_GET['logoEntr'];
     }
     if(isset($_GET['codeDGFK1']))
     {
@@ -90,9 +91,22 @@ if(isset($_GET))
     {
         $codeDGFK2=$_GET['codeDGFK2'];
     }
-    if(isset($_GET['CodeEntr']))
+    if(isset($_GET['EtatEntr']))
     {
-        $CodeEntr=$_GET['CodeEntr'];
+        $EtatEntr=$_GET['EtatEntr'];
+    }
+
+    //pour ajouter
+    if($_GET['add']=="Enregistrer")
+    {  
+        $req="insert into Entreprises values('$CodeEntr','$NomEntr','$_description','$secteurEntr','$adresse','$ville','$codePostal','$pays','$email','$fix','$fax','$siteWeb','$fullNameContact','$gsmContact','$logoEntr','$codeDGFK1','$codeDGFK2','$EtatEntr');";
+        ExecuteNonQuery($cnx,$req);
+        header("Location:Cslt_Entreprises.php");  
+    }
+
+    if($_GET['add']=="Annuler")
+    {  
+        header("Location:Cslt_Entreprises.php");  
     }
 }
 ?>
@@ -110,8 +124,8 @@ if(isset($_GET))
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="../JQ/dist/jquery.validate.min.js"></script>
-
 <br><br><br><br><br>
+
 <style>
 .nav-links a:hover{
     background-color: #FFA137 ;
@@ -133,7 +147,7 @@ background-color: #FFA137;
 </style>
 <!-- commencer le Nv code HTML -->
 <br>
-<form action="gestion_entreprise.php" method="get" id="frm1">
+<form action="gestion_Entreprises.php" method="get" id="frm1">
     <fieldset>
         <legend class="entr">Entreprises</legend><br><br><br>
         <div class="Global">
@@ -147,8 +161,8 @@ background-color: #FFA137;
         <label>Description :</label>
         <input type='text' name='_description' placeholder="entrer une description"><br><br>
         <label>Secteur Entreprises :</label>
-        <input type= 'text' name='SecteurEntre' placeholder="entrer un secteur "><br><br>
-        <label>Adresse  : </label>
+        <input type= 'text' name='secteurEntr' placeholder="entrer un secteur "><br><br>
+        <label>adresse  : </label>
         <input type= 'text' name='adresse' placeholder="entrer adresse "><br><br>
         <label>Ville :</label>
         <input type= 'text' name='ville' placeholder="entrer ville"><br><br>
@@ -163,33 +177,41 @@ background-color: #FFA137;
         <!--div col2-->
         <div class="col2">
         <label>Fixe :</label>
-        <input type= 'text' name='fixe' placeholder="entrer le fix "><br><br>
+        <input type= 'text' name='fix' placeholder="entrer le fix "><br><br>
         <label>Fax :</label>
         <input type= 'text' name='fax' placeholder="entrer fax "><br><br>
         <label>Site Web :</label>
         <input type= 'text' name='siteWeb' placeholder="entrer site Web "><br><br> 
         <label>Full Name Contact :</label>
-        <input type= 'text' name='fullnameContact' placeholder="entrer full name Contact"><br><br>
+        <input type= 'text' name='fullNameContact' placeholder="entrer full name Contact"><br><br>
         <label>GSM Contact :</label>
-        <input type= 'text' name='gsmcontact' placeholder="entrer un GSM "><br><br>
+        <input type= 'text' name='gsmContact' placeholder="entrer un GSM "><br><br>
         <label>Logo d'entreprises :</label>
-        <input type= 'text' name='logoEntre' placeholder="entrer un logo "><br><br>
+        <input type= 'text' name='logoEntr' placeholder="entrer un logo "><br><br>
         <label>Code DGFK1 :</label>
         <input type= 'text' name='codeDGFK1' placeholder="entrer un codeDGFK1 "><br><br>
-        <label>Code DHFK2 :</label>
+        <label>Code DGFK2 :</label>
         <input type= 'text' name='codeDGFK2' placeholder="entrer un codeDGFK2 "><br><br>
-        <label>Etat d'entreprises :</label>
-        <input type= 'text' name='EtatEntre' placeholder="entrer un Etat"><br><br>
+        <label>Etat d'entreprises :</label><br><br>
+        <input type= 'radio' name='EtatEntr' id='A'>Activée valeur par Default	&nbsp;&nbsp;
+        <input type= 'radio' name='EtatEntr' id='D'>Désactivée 	&nbsp;&nbsp;
+        <input type= 'radio' name='EtatEntr' id='AC'>Arreté de contrat	&nbsp;	
+        <input type= 'radio' name='EtatEntr' id='R'>Retard de paiement<br><br>
         </div>
 
         </div><br>
         <div class="div_butt">
-        <input type="submit" name="add" value="Ajouter">
-        <input type="submit" name="add" value="Supprimer">
-        <input type="submit" name="add" value="Modifier">
+        <input id="btnAdd" type="submit" name="add" value="Enregistrer">
+        <input id="btnVider" type="submit" name="add" value="Vider"onclick="resetForm()">
+        <input id="btnAnnuler" type="submit" name="add" value="Annuler">
         </div>
         <br>
         </fieldset>
         </form>
         </body>
+        <script>
+            function resetForm() {
+                document.getElementById("frm1").reset();
+                }
+        </script>
         </html>

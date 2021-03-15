@@ -1,11 +1,11 @@
 <!-- on va appeler le header -->
-<link rel="stylesheet" href="../css/style_Gestion.css">
 <?php
-require_once("../MyLibrery/connection.php");
-$CodeEntr="";
-$nomentr="";
+include_once("../MyLibrery/connection.php");
+$codePL="";
+$codeEntrFK="";
+$NomPL="";
 $_description="";
-$SecteurEntre="";
+$secteurPL="";
 $adresse="";
 $ville="";
 $codePostal="";
@@ -14,29 +14,32 @@ $email="";
 $fixe="";
 $fax="";
 $siteWeb="";
-$fullnameContact="";
-$gsmcontact="";
-$logoEntre="";
-$codeDGFK1="";
-$codeDGFK2="";
-$EtatEntre="";
-if(isset($_GET))
+$fullNameContact="";
+$gsmContact="";
+$logoPL="";
+$codeDPLFK1="";
+$codeDPLFK2="";
+if(isset($_GET) && count($_GET)>0)
 {
-    if(isset($_GET['CodeEntr']))
+    if(isset($_GET['codePL']))
     {
-        $CodeEntr=$_GET['CodeEntr'];
+        $codePL=$_GET['codePL'];
     }
-    if(isset($_GET['nomentr']))
+    if(isset($_GET['codeEntrFK']))
     {
-        $nomentr=$_GET['nomentr'];
+        $codeEntrFK=$_GET['codeEntrFK'];
+    }
+    if(isset($_GET['NomPL']))
+    {
+        $NomPL=$_GET['NomPL'];
     }
     if(isset($_GET['_description']))
     {
         $_description=$_GET['_description'];
     }
-    if(isset($_GET['SecteurEntre']))
+    if(isset($_GET['secteurPL']))
     {
-        $SecteurEntre=$_GET['SecteurEntre'];
+        $secteurPL=$_GET['secteurPL'];
     }
     if(isset($_GET['adresse']))
     {
@@ -70,31 +73,45 @@ if(isset($_GET))
     {
         $siteWeb=$_GET['siteWeb'];
     }
-    if(isset($_GET['fullnameContact']))
+    if(isset($_GET['fullNameContact']))
     {
-        $fullnameContact=$_GET['fullnameContact'];
+        $fullNameContact=$_GET['fullNameContact'];
     }
-    if(isset($_GET['gsmcontact']))
+    if(isset($_GET['gsmContact']))
     {
-        $gsmcontact=$_GET['gsmcontact'];
+        $gsmContact=$_GET['gsmContact'];
     }
-    if(isset($_GET['logoEntre']))
+    if(isset($_GET['logoPL']))
     {
-        $logoEntre=$_GET['logoEntre'];
+        $logoPL=$_GET['logoPL'];
     }
-    if(isset($_GET['codeDGFK1']))
+    if(isset($_GET['codeDPLFK1']))
     {
-        $codeDGFK1=$_GET['codeDGFK1'];
+        $codeDPLFK1=$_GET['codeDPLFK1'];
     }
-    if(isset($_GET['codeDGFK2']))
+    if(isset($_GET['codeDPLFK2']))
     {
-        $codeDGFK2=$_GET['codeDGFK2'];
+        $codeDPLFK2=$_GET['codeDPLFK2'];
     }
-    if(isset($_GET['CodeEntr']))
-    {
-        $CodeEntr=$_GET['CodeEntr'];
+   
+    //pour ajouter
+    if($_GET['add']=="Enregistrer")
+    {  
+        $req1="insert into Poles values('$codePL','$codeEntrFK','$NomPL','$_description','$secteurPL','$adresse','$ville','$codePostal','$pays','$email','$fixe','$fax','$siteWeb','$fullNameContact','$gsmContact','$logoPL','$codeDPLFK1','$codeDPLFK2');";
+        ExecuteNonQuery($cnx,$req1);
+        header("Location:Cslt_Poles.php");  
+    }
+
+    if($_GET['add']=="Annuler")
+    {  
+        header("Location:Cslt_Poles.php");  
     }
 }
+
+    
+    
+
+
 ?>
 <meta charset="UTF-8">
 <link rel = "icon" href="../img/logo_title1.png" type ="image/x-icon">
@@ -142,7 +159,7 @@ background-color: #937CB1;
         <label>Code pole :</label>
         <input type='text' name='codePL' placeholder="entrer code pole"><br><br>
         <label>Code Entreprise :</label>
-        <input type='text' name ='CodeEntrFK' placeholder="entrer l'entreprise"><br><br>
+        <input type='text' name ='codeEntrFK' placeholder="entrer l'entreprise"><br><br>
         <label>Nom pole : :</label>
         <input type='text' name='NomPL' placeholder="entrer nom pole"><br><br>
         <label>Description :</label>
@@ -185,12 +202,17 @@ background-color: #937CB1;
 
         </div><br>
         <div class="div_butt">
-        <input type="submit" name="add" value="Ajouter">
-        <input type="submit" name="add" value="Supprimer">
-        <input type="submit" name="add" value="Modifier">
+        <input id="btnAdd" type="submit" name="add" value="Enregistrer">
+        <input id="btnVider" type="submit" name="add" value="Vider"onclick="resetForm()">
+        <input id="btnAnnuler" type="submit" name="add" value="Annuler">
         </div>
         <br>
         </fieldset>
         </form>
         </body>
+        <script>
+            function resetForm() {
+                document.getElementById("frm1").reset();
+                }
+        </script>
         </html>
