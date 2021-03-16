@@ -62,15 +62,17 @@ background-color: #E6E6E6;
 }
 
 .sidenav #home{
+  text-align: left;
+  font-family: "RocknRoll One";
   margin-top: 0px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   border: 1px solid #E6E6E6;
   color: #111111;
   background-color: #E6E6E6;
   padding: 5px;
   user-select: none;
-  font-size: 40px;
-  text-align: center;
+  font-size: 30px;
+  padding-left: 30px;
 }
 
 .sidenav #home:hover{
