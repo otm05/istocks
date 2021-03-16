@@ -211,7 +211,7 @@ margin-left: 40px;
 .logoentr{
     width: 100px;
     height: 100px;
-    border: 3px solid coral;
+    border: 3px solid silver;
     border-radius: 10%;
 }
 </style>
